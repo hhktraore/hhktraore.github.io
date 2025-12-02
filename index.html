@@ -5,78 +5,899 @@
     <title>Habal Kassoum Traoré – Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        :root {
+            --bg: #050816;
+            --bg-alt: #0b1120;
+            --accent: #38bdf8;
+            --accent-soft: rgba(56,189,248,0.15);
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+            --card-bg: #0f172a;
+            --border-subtle: rgba(148,163,184,0.2);
+            --radius-xl: 18px;
+            --radius-full: 999px;
+            --shadow-soft: 0 18px 45px rgba(15,23,42,0.75);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background: #f7f7f7;
-        }
-        .container {
-            max-width: 850px;
-            background: white;
-            padding: 30px;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.08);
-        }
-        h1 {
-            color: #222;
-            margin-bottom: 10px;
-        }
-        h2 {
-            color: #444;
-            margin-top: 30px;
-        }
-        p {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             line-height: 1.6;
+            background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+            color: var(--text-main);
         }
+
+        .page {
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        /* Navbar */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(14px);
+            background: linear-gradient(to bottom, rgba(15,23,42,0.92), rgba(15,23,42,0.75), transparent);
+            border-bottom: 1px solid rgba(148,163,184,0.2);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 12px;
+            background: radial-gradient(circle at 30% 0, #38bdf8 0, #0ea5e9 40%, #1d4ed8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 0 18px rgba(56,189,248,0.6);
+        }
+
+        .logo-text {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.25rem;
+            list-style: none;
+            font-size: 0.9rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 0.15rem;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #38bdf8, #a855f7);
+            transition: width 0.25s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+
+        .hero {
+            padding: 3.5rem 0 3rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+            gap: 2.75rem;
+            align-items: center;
+        }
+
+        .hero-kicker {
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-kicker span {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 12px rgba(56,189,248,0.9);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.1rem, 4vw, 2.7rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(120deg, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.75rem;
+        }
+
         .tag {
-            display: inline-block;
-            padding: 6px 12px;
-            font-size: 12px;
-            background: #e5e5e5;
-            border-radius: 20px;
-            margin: 3px;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(148,163,184,0.4);
+            padding: 0.15rem 0.65rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: radial-gradient(circle at top left, rgba(56,189,248,0.25), transparent 55%);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .btn-primary, .btn-ghost {
+            border-radius: var(--radius-full);
+            padding: 0.55rem 1.2rem;
+            font-size: 0.85rem;
+            border: 1px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .btn-primary {
+            background: radial-gradient(circle at top left, #38bdf8, #0ea5e9 40%, #1d4ed8 100%);
+            color: white;
+            box-shadow: 0 10px 35px rgba(15,23,42,0.7);
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.05);
+        }
+
+        .btn-ghost {
+            background: rgba(15,23,42,0.6);
+            border-color: rgba(148,163,184,0.5);
+            color: var(--text-muted);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(15,23,42,0.9);
+            color: var(--text-main);
+        }
+
+        .hero-right {
+            position: relative;
+        }
+
+        .hero-card {
+            background: radial-gradient(circle at top, rgba(56,189,248,0.15), rgba(15,23,42,0.98));
+            border-radius: 26px;
+            padding: 1.5rem 1.4rem;
+            border: 1px solid rgba(148,163,184,0.28);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .hero-pill {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(56,189,248,0.65);
+            color: var(--accent);
+            background: rgba(15,23,42,0.7);
+        }
+
+        .hero-card-title {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .hero-badge {
+            font-size: 0.7rem;
+            padding: 0.18rem 0.55rem;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(148,163,184,0.35);
+            color: var(--text-muted);
+            background: rgba(15,23,42,0.7);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.8rem;
+        }
+
+        .stat {
+            padding: 0.55rem 0.6rem;
+            border-radius: 14px;
+            background: rgba(15,23,42,0.9);
+            border: 1px solid rgba(15,23,42,0.9);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .stat-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .orb {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(56,189,248,0.5), transparent 70%);
+            top: -40px;
+            right: -40px;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Sections */
+
+        section {
+            padding: 2.5rem 0 2.75rem;
+        }
+
+        .section-header {
+            margin-bottom: 1.6rem;
+        }
+
+        .section-kicker {
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+        }
+
+        .section-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            max-width: 620px;
+            margin-top: 0.25rem;
+        }
+
+        .grid-two {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(15,23,42,0.95);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-subtle);
+            padding: 1.25rem 1.3rem;
+        }
+
+        .card + .card {
+            margin-top: 0.85rem;
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.6rem;
+        }
+
+        .pill {
+            font-size: 0.73rem;
+            padding: 0.18rem 0.6rem;
+            border-radius: var(--radius-full);
+            background: rgba(15,23,42,0.9);
+            border: 1px solid rgba(148,163,184,0.4);
+            color: var(--text-muted);
+        }
+
+        /* Timeline style for enseignement */
+
+        .timeline {
+            border-left: 1px solid rgba(148,163,184,0.35);
+            padding-left: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .timeline-item {
+            margin-bottom: 0.9rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -1.55rem;
+            top: 0.3rem;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #38bdf8;
+            box-shadow: 0 0 10px rgba(56,189,248,0.9);
+        }
+
+        .timeline-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .timeline-meta {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* Projects */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .project-card {
+            background: rgba(15,23,42,0.96);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-subtle);
+            padding: 1rem 1rem 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-tag {
+            font-size: 0.7rem;
+            color: var(--accent);
+            margin-bottom: 0.2rem;
+        }
+
+        .project-card h3 {
+            font-size: 0.98rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .project-card p {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            margin-bottom: 0.7rem;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .project-bg-accent {
+            position: absolute;
+            inset: auto -60px -80px auto;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(56,189,248,0.22), transparent 65%);
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        /* Contact */
+
+        .contact-card {
+            background: rgba(15,23,42,0.97);
+            border-radius: var(--radius-xl);
+            padding: 1.4rem 1.5rem;
+            border: 1px solid var(--border-subtle);
+            display: grid;
+            grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+            gap: 1.25rem;
+            align-items: center;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-main {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.35rem;
+        }
+
+        .contact-sub {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .contact-links {
+            font-size: 0.88rem;
+        }
+
+        .contact-links a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-links a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            padding: 1.5rem 0 2rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 860px) {
+            .hero-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .hero-right {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 720px) {
+            nav ul {
+                gap: 0.7rem;
+                font-size: 0.8rem;
+            }
+            .grid-two,
+            .contact-card {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .page {
+                padding-top: 0.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 2.3rem;
+            }
+            .hero-subtitle {
+                font-size: 0.92rem;
+            }
         }
     </style>
 </head>
-
 <body>
-<div class="container">
+<div class="page">
 
-    <h1>Habal Kassoum Traoré</h1>
-    <p><strong>Géographe – SIG, risques naturels & télédétection</strong></p>
+    <!-- HEADER -->
 
-    <h2>À propos</h2>
-    <p>
-        Doctorant et ATER à l’Université de Lorraine, je travaille sur les dynamiques de risques,
-        l’inondation et la modélisation spatiale dans le Grand Abidjan. J’enseigne les SIG, la
-        télédétection et l’analyse spatiale.
-    </p>
+    <header>
+        <div class="container nav">
+            <div class="logo">
+                <div class="logo-mark">KT</div>
+                <div class="logo-text">Habal Kassoum Traoré</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#recherche">Recherche</a></li>
+                    <li><a href="#enseignement">Enseignement</a></li>
+                    <li><a href="#projets">Cartes & projets</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <div>
-        <span class="tag">SIG</span>
-        <span class="tag">Télédétection</span>
-        <span class="tag">Risques d’inondation</span>
-        <span class="tag">AHP / Fuzzy-AHP</span>
-        <span class="tag">Abidjan</span>
-    </div>
+    <!-- HERO -->
 
-    <h2>Recherche</h2>
-    <p>
-        Mes travaux portent sur les risques naturels, la vulnérabilité des populations
-        et la mobilisation de données spatiales multi-sources : Sentinel, Landsat,
-        MNT, données socio-économiques...
-    </p>
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <div class="hero-kicker"><span></span> Géographie, risques & SIG</div>
+                <h1>
+                    Géographe spécialisé en
+                    <span class="hero-highlight">risques d’inondation</span>
+                    et analyse spatiale.
+                </h1>
+                <p class="hero-subtitle">
+                    Doctorant et ATER à l’Université de Lorraine, je travaille sur la
+                    modélisation des risques naturels dans le Grand Abidjan en croisant
+                    données spatiales, télédétection et indicateurs socio-économiques.
+                </p>
 
-    <h2>Enseignement</h2>
-    <p>
-        J’interviens dans plusieurs UE : SIG, télédétection, dynamiques territoriales,
-        méthodes d’analyse, enquêtes, etc.
-    </p>
+                <div class="hero-tags">
+                    <div class="tag">Risques d’inondation</div>
+                    <div class="tag">SIG (ArcGIS Pro, QGIS)</div>
+                    <div class="tag">Télédétection</div>
+                    <div class="tag">AHP / Fuzzy-AHP</div>
+                    <div class="tag">Abidjan</div>
+                    <div class="tag">Vulnérabilité</div>
+                </div>
 
-    <h2>Contact</h2>
-    <p>Email : prenom.nom@univ-lorraine.fr</p>
+                <div class="hero-actions">
+                    <a href="#projets" class="btn-primary">
+                        Voir quelques cartes
+                    </a>
+                    <a href="#recherche" class="btn-ghost">
+                        Thèse et axes de recherche
+                    </a>
+                </div>
+            </div>
 
+            <div class="hero-right">
+                <div class="hero-card">
+                    <div class="orb"></div>
+                    <div class="hero-card-header">
+                        <div>
+                            <div class="hero-pill">Grand Abidjan – Côte d’Ivoire</div>
+                            <div class="hero-card-title">
+                                Risques naturels et recomposition urbaine
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.7rem;">
+                        Construction d’indices spatialisés de risque d’inondation,
+                        croisant aléas, enjeux et vulnérabilité des populations à
+                        différentes échelles.
+                    </p>
+
+                    <div class="hero-badges">
+                        <div class="hero-badge">Sentinel & Landsat</div>
+                        <div class="hero-badge">Données pluviométriques</div>
+                        <div class="hero-badge">MNT & réseaux hydro</div>
+                        <div class="hero-badge">Données socio-économiques</div>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-label">Territoires étudiés</div>
+                            <div class="stat-value">Grand Abidjan</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Méthodes</div>
+                            <div class="stat-value">AHP, F-AHP</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Outils</div>
+                            <div class="stat-value">ArcGIS, QGIS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECHERCHE -->
+
+    <section id="recherche">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker">Recherche</div>
+                <div class="section-title">Thèse et axes scientifiques</div>
+                <p class="section-description">
+                    Mes travaux portent sur la compréhension et la cartographie des risques
+                    dans les métropoles d’Afrique de l’Ouest, avec un focus sur l’inondation
+                    et la vulnérabilité urbaine.
+                </p>
+            </div>
+
+            <div class="grid-two">
+                <div>
+                    <div class="card">
+                        <h3>Thèse de doctorat</h3>
+                        <p>
+                            « Risques naturels et recomposition dans le Grand Abidjan
+                            (Côte d’Ivoire) : du recueil à la modélisation des données
+                            spatiales ».
+                        </p>
+                        <p style="margin-top:0.5rem; font-size:0.88rem; color:var(--text-muted);">
+                            L’objectif est de construire une approche multi-critères du risque
+                            d’inondation en combinant données hydrométéorologiques, images
+                            satellites, modèles numériques de terrain et indicateurs
+                            socio-économiques.
+                        </p>
+                        <div class="pill-row">
+                            <div class="pill">Risques urbains</div>
+                            <div class="pill">Analyse multi-critères</div>
+                            <div class="pill">Validation spatiale</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Axes de recherche</h3>
+                        <ul style="font-size:0.88rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
+                            <li>Cartographie multi-échelle de la dangerosité et de la vulnérabilité.</li>
+                            <li>Intégration de données ouvertes, institutionnelles et issues d’enquêtes.</li>
+                            <li>Outils d’aide à la décision pour les acteurs publics.</li>
+                            <li>Articulation entre urbanisation, politiques d’aménagement et exposition aux risques.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="card">
+                        <h3>Compétences techniques</h3>
+                        <div class="pill-row">
+                            <div class="pill">ArcGIS Pro, QGIS</div>
+                            <div class="pill">ModelBuilder</div>
+                            <div class="pill">Télédétection optique</div>
+                            <div class="pill">Indices topographiques</div>
+                            <div class="pill">AHP / Fuzzy-AHP</div>
+                            <div class="pill">Analyse de vulnérabilité</div>
+                        </div>
+                        <p style="font-size:0.86rem; color:var(--text-muted); margin-top:0.7rem;">
+                            Travail en lien avec des institutions locales et des équipes de
+                            recherche pour croiser données scientifiques, experts et
+                            retours de terrain.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENSEIGNEMENT -->
+
+    <section id="enseignement">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker">Enseignement</div>
+                <div class="section-title">Cours et accompagnement des étudiants</div>
+                <p class="section-description">
+                    En tant qu’ATER, j’interviens en Licence et Master sur les SIG,
+                    la télédétection et les dynamiques contemporaines des territoires.
+                </p>
+            </div>
+
+            <div class="grid-two">
+                <div class="card">
+                    <h3>Domaines d’intervention</h3>
+                    <ul style="font-size:0.88rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
+                        <li>SIG : concepts, données, analyse spatiale, ModelBuilder.</li>
+                        <li>Télédétection : pré-traitements, classification, validation.</li>
+                        <li>Risques naturels et vulnérabilité urbaine.</li>
+                        <li>Méthodes d’enquêtes et analyse territoriale.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Quelques UE enseignées</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-title">UE 703 – SIG : concepts, données et pratiques</div>
+                            <div class="timeline-meta">Analyse spatiale, structuration de bases de données, exercices appliqués.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-title">UE 704 – Télédétection appliquée</div>
+                            <div class="timeline-meta">Traitement d’images, cartographie de l’occupation du sol, étude de dynamiques urbaines.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-title">UE 601 – Dynamiques du monde contemporain</div>
+                            <div class="timeline-meta">Analyse des entités régionales, enjeux environnementaux et sociaux.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJETS -->
+
+    <section id="projets">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker">Cartes et projets</div>
+                <div class="section-title">Quelques exemples de travaux SIG et télédétection</div>
+                <p class="section-description">
+                    Sélection de projets mobilisant la télédétection, les SIG et les méthodes
+                    d’analyse multi-critères pour éclairer la décision en matière de risques
+                    et d’aménagement.
+                </p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-bg-accent"></div>
+                    <div class="project-tag">Risque d’inondation</div>
+                    <h3>Indice de risque pour le Grand Abidjan</h3>
+                    <p>
+                        Construction d’un indice composite combinant aléa, exposition et
+                        vulnérabilité sociale, avec validation par événements historiques
+                        d’inondation.
+                    </p>
+                    <div class="project-meta">
+                        <span>ArcGIS Pro, QGIS</span>
+                        <span>Sentinel, MNT</span>
+                        <span>AHP / Fuzzy-AHP</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-bg-accent"></div>
+                    <div class="project-tag">Climat urbain</div>
+                    <h3>Local Climate Zones & îlots de chaleur</h3>
+                    <p>
+                        Classification LCZ et croisement avec des indicateurs de vulnérabilité
+                        pour identifier les quartiers les plus exposés aux vagues de chaleur.
+                    </p>
+                    <div class="project-meta">
+                        <span>LCZ</span>
+                        <span>Imagerie satellite</span>
+                        <span>Analyse de vulnérabilité</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-bg-accent"></div>
+                    <div class="project-tag">Pédagogie</div>
+                    <h3>Projets étudiants et ateliers SIG</h3>
+                    <p>
+                        Encadrement de travaux dirigés sur l’analyse diachronique d’images
+                        satellites, la cartographie des risques et l’exploitation de données
+                        ouvertes.
+                    </p>
+                    <div class="project-meta">
+                        <span>Licence & Master</span>
+                        <span>Études de cas urbains</span>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:1.2rem;">
+                Des exemples de cartes (format 16:9) pourront être ajoutés ici
+                sous forme de vignettes cliquables.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker">Contact</div>
+                <div class="section-title">Me joindre ou en savoir plus</div>
+            </div>
+
+            <div class="contact-card">
+                <div>
+                    <div class="contact-label">Disponibilité</div>
+                    <div class="contact-main">
+                        Ouvert à des collaborations en recherche et en enseignement
+                        autour des risques, des SIG et de la télédétection.
+                    </div>
+                    <div class="contact-sub">
+                        N’hésitez pas à me contacter pour des projets de recherche,
+                        des interventions pédagogiques ou des échanges scientifiques.
+                    </div>
+                </div>
+
+                <div class="contact-links">
+                    <p>
+                        <strong>Email universitaire :</strong><br>
+                        <a href="mailto:prenom.nom@univ-lorraine.fr">prenom.nom@univ-lorraine.fr</a>
+                        <!-- Remplace par ton adresse exacte -->
+                    </p>
+                    <p style="margin-top:0.7rem;">
+                        <strong>LinkedIn :</strong><br>
+                        <a href="#">Ajouter le lien vers votre profil</a>
+                    </p>
+                    <p style="margin-top:0.7rem; font-size:0.8rem; color:var(--text-muted);">
+                        Ce site est en cours d’enrichissement (cartes, publications, ressources).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+        &copy; <span id="year"></span> Habal Kassoum Traoré – Portfolio.
+    </footer>
 </div>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
