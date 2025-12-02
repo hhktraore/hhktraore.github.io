@@ -53,7 +53,7 @@
             top: 0;
             z-index: 50;
             backdrop-filter: blur(14px);
-            background: linear-gradient(to bottom, rgba(15,23,42,0.92), rgba(15,23,42,0.75), transparent);
+            background: linear-gradient(to bottom, rgba(15,23,42,0.95), rgba(15,23,42,0.75), transparent);
             border-bottom: 1px solid rgba(148,163,184,0.2);
         }
 
@@ -91,9 +91,11 @@
 
         nav ul {
             display: flex;
-            gap: 1.25rem;
+            gap: 1.1rem;
             list-style: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         nav a {
@@ -342,7 +344,7 @@
         .section-description {
             font-size: 0.9rem;
             color: var(--text-muted);
-            max-width: 620px;
+            max-width: 680px;
             margin-top: 0.25rem;
         }
 
@@ -389,7 +391,7 @@
             color: var(--text-muted);
         }
 
-        /* Timeline style for enseignement */
+        /* Timeline style */
 
         .timeline {
             border-left: 1px solid rgba(148,163,184,0.35);
@@ -576,47 +578,50 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#recherche">Recherche</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#parcours">Parcours</a></li>
                     <li><a href="#enseignement">Enseignement</a></li>
                     <li><a href="#projets">Cartes & projets</a></li>
+                    <li><a href="#publications">Publications</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO / À PROPOS -->
 
-    <section class="hero">
+    <section class="hero" id="apropos">
         <div class="container hero-grid">
             <div>
                 <div class="hero-kicker"><span></span> Géographie, risques & SIG</div>
                 <h1>
                     Géographe spécialisé en
-                    <span class="hero-highlight">risques d’inondation</span>
+                    <span class="hero-highlight">risques naturels</span>
                     et analyse spatiale.
                 </h1>
                 <p class="hero-subtitle">
-                    Doctorant et ATER à l’Université de Lorraine, je travaille sur la
-                    modélisation des risques naturels dans le Grand Abidjan en croisant
-                    données spatiales, télédétection et indicateurs socio-économiques.
+                    Doctorant en géographie et ATER à l’Université de Lorraine, je travaille
+                    sur la modélisation des risques d’inondation et des recompositions urbaines
+                    dans le Grand Abidjan, en mobilisant les SIG, la télédétection et les
+                    données socio-spatiales.
                 </p>
 
                 <div class="hero-tags">
                     <div class="tag">Risques d’inondation</div>
                     <div class="tag">SIG (ArcGIS Pro, QGIS)</div>
                     <div class="tag">Télédétection</div>
-                    <div class="tag">AHP / Fuzzy-AHP</div>
-                    <div class="tag">Abidjan</div>
-                    <div class="tag">Vulnérabilité</div>
+                    <div class="tag">Analyse multi-critères (AHP / Fuzzy-AHP)</div>
+                    <div class="tag">Urbanisation</div>
+                    <div class="tag">Grand Abidjan</div>
                 </div>
 
                 <div class="hero-actions">
                     <a href="#projets" class="btn-primary">
-                        Voir quelques cartes
+                        Voir quelques travaux SIG
                     </a>
-                    <a href="#recherche" class="btn-ghost">
-                        Thèse et axes de recherche
+                    <a href="#parcours" class="btn-ghost">
+                        Parcours & compétences
                     </a>
                 </div>
             </div>
@@ -634,13 +639,14 @@
                     </div>
 
                     <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.7rem;">
-                        Construction d’indices spatialisés de risque d’inondation,
-                        croisant aléas, enjeux et vulnérabilité des populations à
-                        différentes échelles.
+                        Thèse en cours de préparation en géographie, centrée sur la
+                        construction d’une approche multi-critères du risque d’inondation,
+                        en croisant aléas, enjeux et vulnérabilité sociale dans une métropole
+                        en forte croissance.
                     </p>
 
                     <div class="hero-badges">
-                        <div class="hero-badge">Sentinel & Landsat</div>
+                        <div class="hero-badge">SIG & télédétection</div>
                         <div class="hero-badge">Données pluviométriques</div>
                         <div class="hero-badge">MNT & réseaux hydro</div>
                         <div class="hero-badge">Données socio-économiques</div>
@@ -648,16 +654,16 @@
 
                     <div class="hero-stats">
                         <div class="stat">
-                            <div class="stat-label">Territoires étudiés</div>
-                            <div class="stat-value">Grand Abidjan</div>
+                            <div class="stat-label">Statut</div>
+                            <div class="stat-value">Doctorant & ATER</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-label">Méthodes</div>
-                            <div class="stat-value">AHP, F-AHP</div>
+                            <div class="stat-label">Laboratoire</div>
+                            <div class="stat-value">LOTERR, Metz</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-label">Outils</div>
-                            <div class="stat-value">ArcGIS, QGIS</div>
+                            <div class="stat-label">Localisation</div>
+                            <div class="stat-value">Metz, France</div>
                         </div>
                     </div>
                 </div>
@@ -665,114 +671,199 @@
         </div>
     </section>
 
-    <!-- RECHERCHE -->
+    <!-- PARCOURS & COMPÉTENCES -->
 
-    <section id="recherche">
+    <section id="parcours">
         <div class="container">
             <div class="section-header">
-                <div class="section-kicker">Recherche</div>
-                <div class="section-title">Thèse et axes scientifiques</div>
+                <div class="section-kicker">Parcours</div>
+                <div class="section-title">Formation & compétences</div>
                 <p class="section-description">
-                    Mes travaux portent sur la compréhension et la cartographie des risques
-                    dans les métropoles d’Afrique de l’Ouest, avec un focus sur l’inondation
-                    et la vulnérabilité urbaine.
+                    Un parcours entre la Côte d’Ivoire et la France, avec une spécialisation
+                    progressive en urbanisation, risques naturels, SIG et télédétection.
                 </p>
             </div>
 
             <div class="grid-two">
                 <div>
                     <div class="card">
-                        <h3>Thèse de doctorat</h3>
-                        <p>
-                            « Risques naturels et recomposition dans le Grand Abidjan
-                            (Côte d’Ivoire) : du recueil à la modélisation des données
-                            spatiales ».
-                        </p>
-                        <p style="margin-top:0.5rem; font-size:0.88rem; color:var(--text-muted);">
-                            L’objectif est de construire une approche multi-critères du risque
-                            d’inondation en combinant données hydrométéorologiques, images
-                            satellites, modèles numériques de terrain et indicateurs
-                            socio-économiques.
-                        </p>
-                        <div class="pill-row">
-                            <div class="pill">Risques urbains</div>
-                            <div class="pill">Analyse multi-critères</div>
-                            <div class="pill">Validation spatiale</div>
+                        <h3>Formation académique</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-title">
+                                    Thèse en géographie (risques naturels, SIG, télédétection, urbanisation)
+                                </div>
+                                <div class="timeline-meta">
+                                    Université de Lorraine, Metz – Sept. 2021 à aujourd’hui
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">
+                                    Master Urbanisme et Aménagement
+                                </div>
+                                <div class="timeline-meta">
+                                    Université de Lorraine, Metz – Sept. 2019 à Déc. 2021
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">
+                                    Formation continue – Modèle Numérique de Terrain
+                                </div>
+                                <div class="timeline-meta">
+                                    AgroParisTech & Maison de la Télédétection, Montpellier – Janv. 2022
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">
+                                    Licence Géographie & Aménagement
+                                </div>
+                                <div class="timeline-meta">
+                                    Université de Poitiers – Sept. 2017 à Mai 2018
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="card">
-                        <h3>Axes de recherche</h3>
-                        <ul style="font-size:0.88rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
-                            <li>Cartographie multi-échelle de la dangerosité et de la vulnérabilité.</li>
-                            <li>Intégration de données ouvertes, institutionnelles et issues d’enquêtes.</li>
-                            <li>Outils d’aide à la décision pour les acteurs publics.</li>
-                            <li>Articulation entre urbanisation, politiques d’aménagement et exposition aux risques.</li>
+                        <h3>Formations doctorales & spécialisées</h3>
+                        <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
+                            <li>Modélisation statistique – Université de Lorraine (2024).</li>
+                            <li>Prise en main ArcGIS Online & ArcGIS Pro – ESRI France (2022).</li>
+                            <li>Enseigner, apprendre avec le numérique – INSPE Montigny (2022).</li>
+                            <li>Sauveteur Secouriste du Travail (SST), Campus Ile du Saulcy (2022).</li>
+                            <li>Connecting Citizen Science with Remote Sensing – NASA (en ligne, 2023).</li>
                         </ul>
                     </div>
                 </div>
 
                 <div>
                     <div class="card">
-                        <h3>Compétences techniques</h3>
-                        <div class="pill-row">
-                            <div class="pill">ArcGIS Pro, QGIS</div>
-                            <div class="pill">ModelBuilder</div>
-                            <div class="pill">Télédétection optique</div>
-                            <div class="pill">Indices topographiques</div>
-                            <div class="pill">AHP / Fuzzy-AHP</div>
-                            <div class="pill">Analyse de vulnérabilité</div>
-                        </div>
-                        <p style="font-size:0.86rem; color:var(--text-muted); margin-top:0.7rem;">
-                            Travail en lien avec des institutions locales et des équipes de
-                            recherche pour croiser données scientifiques, experts et
-                            retours de terrain.
+                        <h3>Compétences principales</h3>
+                        <p>
+                            Mes compétences se structurent autour de l’analyse spatiale,
+                            de la télédétection et de l’aide à la décision pour les
+                            problématiques d’aménagement et de risques.
                         </p>
+                        <div class="pill-row">
+                            <div class="pill">Analyse spatiale appliquée aux projets d’aménagement</div>
+                            <div class="pill">Analyse d’images satellites (télédétection)</div>
+                            <div class="pill">Modélisation hiérarchique multi-critères</div>
+                            <div class="pill">Deep Learning (ArcGIS Pro)</div>
+                            <div class="pill">Aide à la décision</div>
+                            <div class="pill">Représentation spatiale</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Outils & langages</h3>
+                        <p style="font-size:0.88rem; color:var(--text-muted);">
+                            <strong>SIG & télédétection :</strong> ArcGIS Pro, ArcGIS Desktop, ArcGIS Dashboard,
+                            QGIS, Survey123, MNT, indices, classification.
+                        </p>
+                        <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.4rem;">
+                            <strong>Cartographie & DAO :</strong> Illustrator, Inkscape, Phildigit, Philcarto, Magrit.
+                        </p>
+                        <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.4rem;">
+                            <strong>Bureautique & rédaction :</strong> Suite Office (Word, Excel, PowerPoint),
+                            LaTeX (notions).
+                        </p>
+                        <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.4rem;">
+                            <strong>Langages :</strong> SQL, R, Matlab (notions).
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Langues</h3>
+                        <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
+                            <li>Français – langue maternelle.</li>
+                            <li>Anglais – niveau intermédiaire.</li>
+                            <li>Espagnol – notions.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- ENSEIGNEMENT -->
+    <!-- ENSEIGNEMENT & EXPÉRIENCES -->
 
     <section id="enseignement">
         <div class="container">
             <div class="section-header">
-                <div class="section-kicker">Enseignement</div>
-                <div class="section-title">Cours et accompagnement des étudiants</div>
+                <div class="section-kicker">Enseignement & expériences</div>
+                <div class="section-title">Cours assurés & engagements pédagogiques</div>
                 <p class="section-description">
-                    En tant qu’ATER, j’interviens en Licence et Master sur les SIG,
-                    la télédétection et les dynamiques contemporaines des territoires.
+                    Un investissement fort dans la pédagogie en géographie, SIG et
+                    télédétection, avec un souci constant de l’articulation entre
+                    concepts, méthodes et applications concrètes.
                 </p>
             </div>
 
             <div class="grid-two">
-                <div class="card">
-                    <h3>Domaines d’intervention</h3>
-                    <ul style="font-size:0.88rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
-                        <li>SIG : concepts, données, analyse spatiale, ModelBuilder.</li>
-                        <li>Télédétection : pré-traitements, classification, validation.</li>
-                        <li>Risques naturels et vulnérabilité urbaine.</li>
-                        <li>Méthodes d’enquêtes et analyse territoriale.</li>
-                    </ul>
+                <div>
+                    <div class="card">
+                        <h3>Expériences d’enseignement</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-title">
+                                    Attaché Temporaire d’Enseignement et de Recherche (ATER)
+                                </div>
+                                <div class="timeline-meta">
+                                    Université de Lorraine, Metz – Oct. 2024 à Août 2025
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">
+                                    Enseignant vacataire
+                                </div>
+                                <div class="timeline-meta">
+                                    Université de Lorraine, Metz/Nancy – Sept. 2020 à Juin 2024
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Autres expériences</h3>
+                        <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
+                            <li>Stagiaire LOTERR – Stage de télédétection (Avril 2019 – Juillet 2019).</li>
+                            <li>Vacataire LOTERR – Projet Border Retail (Mars 2020).</li>
+                            <li>Encadrement de stagiaires sur des projets de classification d’images et de végétation urbaine.</li>
+                            <li>Représentant des doctorants du laboratoire LOTERR depuis 2022.</li>
+                            <li>Membre de l’Association Internationale de Climatologie (AIC).</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Engagements & activités</h3>
+                        <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
+                            <li>Théâtre à l’espace Bernard-Marie Koltès (Metz).</li>
+                            <li>Bénévolat à l’AFEV (Poitiers, 2017–2018).</li>
+                            <li>Bénévolat à Messins solidaires (Metz, 2021–2022).</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <h3>Quelques UE enseignées</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-title">UE 703 – SIG : concepts, données et pratiques</div>
-                            <div class="timeline-meta">Analyse spatiale, structuration de bases de données, exercices appliqués.</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-title">UE 704 – Télédétection appliquée</div>
-                            <div class="timeline-meta">Traitement d’images, cartographie de l’occupation du sol, étude de dynamiques urbaines.</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-title">UE 601 – Dynamiques du monde contemporain</div>
-                            <div class="timeline-meta">Analyse des entités régionales, enjeux environnementaux et sociaux.</div>
-                        </div>
+                <div>
+                    <div class="card">
+                        <h3>Cours & thématiques enseignées</h3>
+                        <p style="font-size:0.88rem; color:var(--text-muted);">
+                            Les contenus d’enseignement couvrent un continuum allant des bases
+                            des SIG à des approches avancées en télédétection et en analyse
+                            des dynamiques territoriales.
+                        </p>
+                        <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.5rem;">
+                            <li><strong>SIG – Systèmes d’Information Géographique :</strong> concepts, données, projections, analyses thématiques et spatiales, requêtes SQL, MNT, indices, géoréférencement.</li>
+                            <li><strong>Cartographie numérique :</strong> construction de cartes statistiques, discrétisation, usages de Philcarto/Magrit, mise en forme sous Inkscape.</li>
+                            <li><strong>DAO / Illustrator :</strong> réalisation de cartes, croquis, posters scientifiques, vectorisation et mise en page.</li>
+                            <li><strong>Analyse spatiale appliquée :</strong> carroyage, MAUP, agrégation territoriale, analyse réseau, chemins optimaux, zones de desserte.</li>
+                            <li><strong>SIG & télédétection approfondis :</strong> traitement d’images, classification supervisée / non supervisée, matrice de confusion, suivi de dynamiques environnementales.</li>
+                            <li><strong>Techniques d’enquête :</strong> conception et mise en œuvre d’enquêtes qualitatives et quantitatives, guide d’entretien, questionnaires, analyse des données (ex. désertification commerciale à Metz).</li>
+                            <li><strong>Analyse des entités régionales :</strong> dynamiques territoriales, critères de délimitation, disparités, gouvernance.</li>
+                            <li><strong>Climat urbain & changement climatique :</strong> ICU, impacts sur les populations, vulnérabilité, stratégies d’adaptation.</li>
+                            <li><strong>Méthodologie de la recherche :</strong> problématique, hypothèses, cadre théorique, collecte et analyse de données, rédaction académique.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -780,12 +871,12 @@
         </div>
     </section>
 
-    <!-- PROJETS -->
+    <!-- PROJETS & CARTES -->
 
     <section id="projets">
         <div class="container">
             <div class="section-header">
-                <div class="section-kicker">Cartes et projets</div>
+                <div class="section-kicker">Cartes & projets</div>
                 <div class="section-title">Quelques exemples de travaux SIG et télédétection</div>
                 <p class="section-description">
                     Sélection de projets mobilisant la télédétection, les SIG et les méthodes
@@ -802,7 +893,7 @@
                     <p>
                         Construction d’un indice composite combinant aléa, exposition et
                         vulnérabilité sociale, avec validation par événements historiques
-                        d’inondation.
+                        d’inondation dans la métropole abidjanaise.
                     </p>
                     <div class="project-meta">
                         <span>ArcGIS Pro, QGIS</span>
@@ -817,7 +908,8 @@
                     <h3>Local Climate Zones & îlots de chaleur</h3>
                     <p>
                         Classification LCZ et croisement avec des indicateurs de vulnérabilité
-                        pour identifier les quartiers les plus exposés aux vagues de chaleur.
+                        pour identifier les quartiers les plus exposés aux vagues de chaleur
+                        et proposer des pistes d’aménagement rafraîchissant.
                     </p>
                     <div class="project-meta">
                         <span>LCZ</span>
@@ -832,8 +924,8 @@
                     <h3>Projets étudiants et ateliers SIG</h3>
                     <p>
                         Encadrement de travaux dirigés sur l’analyse diachronique d’images
-                        satellites, la cartographie des risques et l’exploitation de données
-                        ouvertes.
+                        satellites, la cartographie des risques, les enquêtes de terrain
+                        et l’exploitation de données ouvertes pour des études urbaines.
                     </p>
                     <div class="project-meta">
                         <span>Licence & Master</span>
@@ -846,6 +938,65 @@
                 Des exemples de cartes (format 16:9) pourront être ajoutés ici
                 sous forme de vignettes cliquables.
             </p>
+        </div>
+    </section>
+
+    <!-- PUBLICATIONS & CONFÉRENCES -->
+
+    <section id="publications">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-kicker">Publications & communications</div>
+                <div class="section-title">Travaux scientifiques & diffusion</div>
+                <p class="section-description">
+                    Participation à des conférences internationales et nationales, avec des
+                    travaux portant sur l’évaluation des données satellitaires, les risques
+                    d’inondation et les dynamiques urbaines en milieu tropical humide.
+                </p>
+            </div>
+
+            <div class="grid-two">
+                <div>
+                    <div class="card">
+                        <h3>Communications</h3>
+                        <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
+                            <li>
+                                <strong>EGU – European Geosciences Union</strong> (Vienne, 2024) :<br>
+                                A spatio-temporal analysis of the risks of flooding and landslides in Greater Abidjan, Ivory Coast, by applying a multi-risk framework.
+                            </li>
+                            <li>
+                                <strong>Association Internationale de Climatologie (AIC)</strong> (Bucarest, 2023) :<br>
+                                Évaluation des données satellitaires pour compenser le déficit de stations pluviométriques sur le territoire du Grand Abidjan.
+                            </li>
+                            <li>
+                                <strong>Géo-événement SIG – ESRI</strong> (2022, 2023) – présentations à distance autour de l’usage des SIG pour l’analyse des risques.
+                            </li>
+                            <li>
+                                <strong>Festival International de Géographie</strong> (Vosges, 2022).
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="card">
+                        <h3>Publications</h3>
+                        <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
+                            <li>
+                                <strong>Évaluation des données satellitaires pour compenser le déficit de stations pluviométriques sur le territoire du Grand Abidjan (Côte d’Ivoire)</strong> – HAL.
+                            </li>
+                            <li>
+                                <strong>Appréhender l’urbanisation en milieu tropical humide</strong> – HAL.
+                            </li>
+                        </ul>
+                        <p style="font-size:0.84rem; color:var(--text-muted); margin-top:0.6rem;">
+                            Les liens vers les textes complets pourront être ajoutés ici
+                            (HAL, autres archives ouvertes).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -867,22 +1018,36 @@
                     </div>
                     <div class="contact-sub">
                         N’hésitez pas à me contacter pour des projets de recherche,
-                        des interventions pédagogiques ou des échanges scientifiques.
+                        des interventions pédagogiques, des encadrements ou des
+                        échanges scientifiques.
                     </div>
                 </div>
 
                 <div class="contact-links">
                     <p>
                         <strong>Email universitaire :</strong><br>
-                        <a href="mailto:prenom.nom@univ-lorraine.fr">prenom.nom@univ-lorraine.fr</a>
-                        <!-- Remplace par ton adresse exacte -->
+                        <a href="mailto:habal-kassoum.traore@univ-lorraine.fr">
+                            habal-kassoum.traore@univ-lorraine.fr
+                        </a>
                     </p>
                     <p style="margin-top:0.7rem;">
                         <strong>LinkedIn :</strong><br>
-                        <a href="#">Ajouter le lien vers votre profil</a>
+                        <a href="https://www.linkedin.com/in/habal-traore/" target="_blank">
+                            linkedin.com/in/habal-traore/
+                        </a>
+                    </p>
+                    <p style="margin-top:0.7rem;">
+                        <strong>Fiche laboratoire LOTERR :</strong><br>
+                        <a href="https://loterr.univ-lorraine.fr/doctorant/traore-habal/" target="_blank">
+                            Profil doctorant – LOTERR
+                        </a>
+                    </p>
+                    <p style="margin-top:0.7rem;">
+                        <strong>Téléphone :</strong><br>
+                        +33 (0)7 58 41 93 60
                     </p>
                     <p style="margin-top:0.7rem; font-size:0.8rem; color:var(--text-muted);">
-                        Ce site est en cours d’enrichissement (cartes, publications, ressources).
+                        Site en cours d’enrichissement (cartes, données, supports de cours).
                     </p>
                 </div>
             </div>
