@@ -724,12 +724,12 @@
                 </div>
 
                 <div class="hero-actions">
-                    <a href="#projets" class="btn-primary">
-                        Voir quelques travaux SIG
-                    </a>
-                    <a href="#parcours" class="btn-ghost">
-                        Parcours et compétences
-                    </a>
+<a href="#projets" class="btn-primary tab-link">
+    Voir quelques travaux SIG
+</a>
+<a href="#parcours" class="btn-ghost tab-link">
+    Parcours et compétences
+</a>
                 </div>
             </div>
 
@@ -1310,7 +1310,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // Gestion des onglets
-    const links = document.querySelectorAll('header nav a');
+    const links = document.querySelectorAll('header nav a, .tab-link');
     const sections = document.querySelectorAll('.tab-section');
 
     function activateTab(id) {
