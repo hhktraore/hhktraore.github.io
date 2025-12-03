@@ -356,14 +356,14 @@
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 0.7rem;
-            font-size: 0.8rem;
-            color: #4b5563;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
             gap: 0.4rem;
+            font-size: 0.8rem;
+            color: #4b5563;
         }
 
         .legend-swatch {
@@ -525,7 +525,7 @@
             color: var(--text-muted);
         }
 
-        /* Résultats de thèse cliquables */
+        /* Listes cliquables (résultats + données) */
 
         .thesis-results-list {
             list-style: none;
@@ -1109,14 +1109,56 @@
                         </p>
                     </div>
 
+                    <!-- Données mobilisées : maintenant cliquable -->
                     <div class="card">
                         <h3>Données mobilisées</h3>
-                        <ul style="font-size:0.88rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
-                            <li>Images satellites (Sentinel, Landsat) pour l’occupation du sol et les dynamiques urbaines.</li>
-                            <li>Modèles numériques de terrain pour l’analyse des pentes, des convergences de flux et des zones basses.</li>
-                            <li>Données pluviométriques issues de stations et de produits satellitaires.</li>
-                            <li>Données socio-économiques pour appréhender densités, formes urbaines et vulnérabilité sociale.</li>
-                            <li>Archives, rapports institutionnels et retours de terrain sur les événements d’inondation.</li>
+                        <ul class="thesis-results-list">
+
+                            <li class="thesis-results-item">
+                                <div class="thesis-results-bullet"></div>
+                                <a href="#" target="_blank" class="thesis-result-link">
+                                    Images satellites (Sentinel, Landsat) pour l’occupation du sol
+                                    et les dynamiques urbaines
+                                    <span>↗</span>
+                                </a>
+                            </li>
+
+                            <li class="thesis-results-item">
+                                <div class="thesis-results-bullet"></div>
+                                <a href="#" target="_blank" class="thesis-result-link">
+                                    Modèles numériques de terrain pour l’analyse des pentes,
+                                    des convergences de flux et des zones basses
+                                    <span>↗</span>
+                                </a>
+                            </li>
+
+                            <li class="thesis-results-item">
+                                <div class="thesis-results-bullet"></div>
+                                <a href="#" target="_blank" class="thesis-result-link">
+                                    Données pluviométriques issues de stations
+                                    et de produits satellitaires
+                                    <span>↗</span>
+                                </a>
+                            </li>
+
+                            <li class="thesis-results-item">
+                                <div class="thesis-results-bullet"></div>
+                                <a href="#" target="_blank" class="thesis-result-link">
+                                    Données socio-économiques pour appréhender densités,
+                                    formes urbaines et vulnérabilité sociale
+                                    <span>↗</span>
+                                </a>
+                            </li>
+
+                            <li class="thesis-results-item">
+                                <div class="thesis-results-bullet"></div>
+                                <a href="#" target="_blank" class="thesis-result-link">
+                                    Archives, rapports institutionnels et retours de terrain
+                                    sur les événements d’inondation
+                                    <span>↗</span>
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
 
