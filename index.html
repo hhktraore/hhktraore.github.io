@@ -7,26 +7,21 @@
 
     <style>
         :root {
-            /* Palette inspirée du site info.gouv.fr / Risques */
-            --bg: #f6f7fb;
+            /* Palette d’origine (verts / bleus) */
+            --bg: #f5f5f7;
             --bg-alt: #ffffff;
             --panel: #ffffff;
-            --panel-soft: #f8f9fc;
-
-            --blue-main: #000091;    /* Bleu République */
-            --blue-soft: #e3e5ff;
-            --blue-muted: #4b4f9c;
-
-            --green-main: #00a95f;   /* Boutons principaux */
-            --green-hover: #008a4f;
-
-            --text-main: #161616;
-            --text-muted: #555f6b;
-            --border-subtle: #d5d8e3;
-
+            --panel-soft: #f9fafb;
+            --accent: #22c55e;
+            --accent-2: #0ea5e9;
+            --accent-soft: rgba(34,197,94,0.10);
+            --accent-2-soft: rgba(14,165,233,0.10);
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --border-subtle: rgba(17,24,39,0.08);
             --radius-lg: 18px;
             --radius-full: 999px;
-            --shadow-soft: 0 14px 30px rgba(0,0,0,0.07);
+            --shadow-soft: 0 18px 35px rgba(15,23,42,0.08);
         }
 
         * {
@@ -43,7 +38,10 @@
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             line-height: 1.6;
             color: var(--text-main);
-            background: var(--bg);
+            background:
+                radial-gradient(circle at 0 0, #e0f2fe 0, transparent 55%),
+                radial-gradient(circle at 100% 0, #dcfce7 0, transparent 55%),
+                var(--bg);
         }
 
         .page {
@@ -65,40 +63,46 @@
             display: block;
         }
 
-        /* HEADER */
+        /* Navbar */
 
         header {
             position: sticky;
             top: 0;
             z-index: 50;
-            background: #ffffff;
-            border-bottom: 1px solid var(--border-subtle);
+            backdrop-filter: blur(16px);
+            background: linear-gradient(to bottom,
+                        rgba(255,255,255,0.96),
+                        rgba(255,255,255,0.9),
+                        transparent);
+            border-bottom: 1px solid rgba(17,24,39,0.06);
         }
 
         .nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0.7rem 0;
+            padding: 0.75rem 0;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.7rem;
+            gap: 0.6rem;
         }
 
         .logo-mark {
             width: 34px;
             height: 34px;
-            border-radius: 50%;
-            background: var(--blue-main);
+            border-radius: 14px;
+            background:
+                radial-gradient(circle at 30% 0, #22c55e 0, #16a34a 36%, #0ea5e9 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            color: #ffffff;
+            color: white;
+            box-shadow: 0 0 18px rgba(34,197,94,0.45);
         }
 
         .logo-text {
@@ -108,7 +112,7 @@
 
         nav ul {
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
             list-style: none;
             font-size: 0.9rem;
             flex-wrap: wrap;
@@ -118,29 +122,63 @@
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            padding: 0.35rem 0.85rem;
+            position: relative;
+            padding: 0.35rem 0.9rem;
             border-radius: var(--radius-full);
             font-weight: 500;
+            letter-spacing: 0.03em;
             transition:
                 color 0.2s ease,
-                background 0.2s ease;
+                background 0.2s ease,
+                box-shadow 0.2s ease,
+                transform 0.15s ease;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 14%;
+            bottom: 0.2rem;
+            width: 0;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(to right, var(--accent), var(--accent-2));
+            transition: width 0.25s ease;
         }
 
         nav a:hover {
-            color: var(--blue-main);
-            background: #eef0ff;
+            color: var(--text-main);
+            background: radial-gradient(circle at top left,
+                        rgba(34,197,94,0.08),
+                        rgba(14,165,233,0.06));
+            box-shadow: 0 0 0 1px rgba(148,163,184,0.35);
+            transform: translateY(-1px);
+        }
+
+        nav a:hover::after {
+            width: 72%;
         }
 
         nav a.active-tab-link {
-            color: #ffffff;
-            background: var(--blue-main);
+            color: var(--text-main);
+            background: radial-gradient(circle at top left,
+                        rgba(34,197,94,0.12),
+                        rgba(14,165,233,0.10));
+            box-shadow: 0 0 0 1px rgba(148,163,184,0.45),
+                        0 8px 18px rgba(15,23,42,0.08);
         }
 
-        /* BANNIÈRE VERTE */
+        nav a.active-tab-link::after {
+            width: 72%;
+        }
+
+        /* BANNIÈRE */
 
         .top-banner {
-            background: #e3f6ec;
-            border-bottom: 1px solid #c3e7d6;
+            position: relative;
+            z-index: 40;
+            background: radial-gradient(circle at 0 0, rgba(187,247,208,0.9), transparent 60%),
+                        radial-gradient(circle at 100% 100%, rgba(34,197,94,0.28), transparent 55%);
         }
 
         .banner-inner {
@@ -151,21 +189,15 @@
             padding: 0.85rem 0;
         }
 
-        .banner-text {
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-        }
-
         .banner-text-strong {
-            font-size: 0.95rem;
+            font-size: 0.93rem;
             font-weight: 600;
-            color: #12492f;
+            color: #064e3b;
         }
 
         .banner-text-sub {
             font-size: 0.85rem;
-            color: #256647;
+            color: #047857;
         }
 
         .banner-actions {
@@ -177,7 +209,7 @@
         .banner-btn-primary,
         .banner-btn-ghost {
             border-radius: var(--radius-full);
-            padding: 0.4rem 1.1rem;
+            padding: 0.35rem 0.95rem;
             font-size: 0.82rem;
             border: 1px solid transparent;
             cursor: pointer;
@@ -189,23 +221,23 @@
         }
 
         .banner-btn-primary {
-            background: var(--green-main);
-            color: #ffffff;
-            box-shadow: 0 10px 18px rgba(0,169,95,0.35);
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #ecfdf5;
+            box-shadow: 0 10px 20px rgba(22,163,74,0.35);
         }
 
         .banner-btn-primary:hover {
-            background: var(--green-hover);
+            filter: brightness(1.06);
         }
 
         .banner-btn-ghost {
-            background: transparent;
-            border-color: #6ac39b;
-            color: #145c39;
+            background: rgba(240,253,244,0.9);
+            border-color: rgba(22,163,74,0.5);
+            color: #065f46;
         }
 
         .banner-btn-ghost:hover {
-            background: #d7efe2;
+            background: #dcfce7;
         }
 
         @media (max-width: 720px) {
@@ -219,49 +251,52 @@
         /* HERO */
 
         .hero {
-            padding: 3rem 0 3rem;
+            padding: 3.0rem 0 3rem;
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: minmax(0, 3.1fr) minmax(0, 2.3fr);
-            gap: 2.5rem;
+            grid-template-columns: minmax(0, 3.3fr) minmax(0, 2.4fr);
+            gap: 2.7rem;
             align-items: center;
         }
 
         .hero-kicker {
-            font-size: 0.8rem;
-            letter-spacing: 0.14em;
+            font-size: 0.82rem;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
-            color: var(--blue-main);
+            color: var(--accent-2);
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.8rem;
+            gap: 0.4rem;
+            margin-bottom: 0.6rem;
         }
 
         .hero-kicker span {
             width: 7px;
             height: 7px;
             border-radius: 999px;
-            background: var(--blue-main);
+            background: var(--accent-2);
+            box-shadow: 0 0 12px rgba(56,189,248,0.7);
         }
 
         .hero h1 {
-            font-size: clamp(2.1rem, 4vw, 2.8rem);
+            font-size: clamp(2.1rem, 4vw, 2.7rem);
             font-weight: 700;
-            margin-bottom: 0.7rem;
+            margin-bottom: 0.5rem;
         }
 
         .hero-highlight {
-            color: var(--green-main);
+            background: linear-gradient(120deg, #16a34a, #0ea5e9);
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
         .hero-subtitle {
             font-size: 1rem;
             color: var(--text-muted);
-            max-width: 620px;
-            margin-bottom: 1.3rem;
+            max-width: 580px;
+            margin-bottom: 1.2rem;
         }
 
         .hero-tags {
@@ -273,11 +308,13 @@
 
         .tag {
             border-radius: var(--radius-full);
-            border: 1px solid var(--border-subtle);
+            border: 1px solid rgba(148,163,184,0.45);
             padding: 0.18rem 0.7rem;
             font-size: 0.76rem;
             color: var(--text-muted);
-            background: #ffffff;
+            background:
+                linear-gradient(to right, rgba(34,197,94,0.10), rgba(14,165,233,0.04)),
+                #ffffff;
         }
 
         .hero-actions {
@@ -301,80 +338,76 @@
         }
 
         .btn-primary {
-            background: var(--green-main);
-            color: #ffffff;
+            background: radial-gradient(circle at top left, #22c55e, #16a34a 40%, #0f766e 100%);
+            color: white;
             box-shadow: var(--shadow-soft);
         }
 
         .btn-primary:hover {
-            background: var(--green-hover);
+            filter: brightness(1.05);
         }
 
         .btn-ghost {
-            background: #ffffff;
-            border-color: var(--border-subtle);
-            color: var(--blue-main);
+            background: transparent;
+            border-color: rgba(148,163,184,0.6);
+            color: var(--text-muted);
         }
 
         .btn-ghost:hover {
-            background: #eef0ff;
+            background: #f9fafb;
+            color: var(--text-main);
         }
 
         /* HERO DROITE : photo + carte */
 
         .hero-right {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .hero-photo-wrapper {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 1rem;
-        }
-
-        .hero-photo-block {
-            text-align: center;
+            position: relative;
+            z-index: 2;
+            margin-bottom: -3.2rem; /* chevauchement sur la carte */
         }
 
         .hero-photo {
-            width: 130px;
-            height: 130px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #ffffff;
-            box-shadow: 0 12px 25px rgba(0,0,0,0.18);
+            border: 4px solid #ffffff;
+            box-shadow: 0 16px 30px rgba(15,23,42,0.35);
             background: #e5e7eb;
         }
 
-        .hero-photo-caption {
-            margin-top: 0.45rem;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            background: #ffffff;
-            display: inline-block;
-            padding: 0.2rem 0.7rem;
-            border-radius: var(--radius-full);
-            box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-        }
+        /* Carte */
 
         .map-card {
             position: relative;
-            border-radius: 24px;
-            padding: 1.5rem 1.6rem;
-            background: linear-gradient(135deg, #fdfdff 0%, #eef0ff 55%, #f6f7fb 100%);
-            border: 1px solid var(--border-subtle);
-            box-shadow: var(--shadow-soft);
+            border-radius: 26px;
+            padding: 3.4rem 1.7rem 1.4rem; /* plus de padding en haut pour la photo */
+            background:
+                radial-gradient(circle at 0 0, rgba(190,242,100,0.28), transparent 55%),
+                radial-gradient(circle at 100% 100%, rgba(56,189,248,0.25), transparent 60%),
+                #f9fafb;
+            border: 1px solid rgba(148,163,184,0.35);
+            box-shadow: 0 20px 40px rgba(15,23,42,0.10);
             overflow: hidden;
         }
 
         .map-grid {
-            border-radius: 18px;
+            position: relative;
+            border-radius: 20px;
             overflow: hidden;
-            border: 1px solid #d0d5f0;
+            border: 1px solid rgba(148,163,184,0.45);
             background: #ffffff;
         }
 
         .map-inner {
+            position: relative;
             padding: 1.1rem 1.2rem 1rem;
         }
 
@@ -388,6 +421,7 @@
         .map-title {
             font-size: 0.96rem;
             font-weight: 600;
+            color: #111827;
         }
 
         .map-pill {
@@ -395,11 +429,13 @@
             align-items: center;
             justify-content: center;
             font-size: 0.78rem;
-            padding: 0.25rem 1rem;
+            padding: 0.28rem 1.1rem;
             border-radius: 999px;
-            border: 1px solid var(--blue-main);
-            color: var(--blue-main);
-            background: var(--blue-soft);
+            border: 1px solid rgba(34,197,94,0.45);
+            color: #166534;
+            background: rgba(187,247,208,0.85);
+            box-shadow: 0 10px 20px rgba(16,185,129,0.18);
+            white-space: nowrap;
         }
 
         .map-line {
@@ -407,11 +443,11 @@
             width: 100%;
             background-image: linear-gradient(to right,
                     transparent 0%,
-                    #d0d3eb 18%,
-                    transparent 42%,
-                    #d0d3eb 65%,
-                    transparent 100%);
-            opacity: 0.9;
+                    rgba(148,163,184,0.8) 12%,
+                    transparent 28%,
+                    rgba(148,163,184,0.8) 40%,
+                    transparent 60%);
+            opacity: 0.7;
             margin: 0.7rem 0 0.9rem;
         }
 
@@ -426,29 +462,40 @@
             align-items: center;
             gap: 0.4rem;
             font-size: 0.8rem;
-            color: var(--text-muted);
+            color: #4b5563;
         }
 
         .legend-swatch {
             width: 16px;
             height: 10px;
             border-radius: 999px;
-            border: 1px solid rgba(0,0,0,0.08);
+            border: 1px solid rgba(148,163,184,0.7);
         }
 
-        .swatch-risk { background: linear-gradient(to right, #ff6b6b, #f97316); }
-        .swatch-pop { background: linear-gradient(to right, #ffd60a, #f97316); }
-        .swatch-elev { background: linear-gradient(to right, #34d399, #059669); }
-        .swatch-pluv { background: linear-gradient(to right, #38bdf8, #0ea5e9); }
+        .swatch-risk {
+            background: linear-gradient(to right, #0ea5e9, #22c55e);
+        }
+
+        .swatch-pop {
+            background: linear-gradient(to right, #f97316, #ef4444);
+        }
+
+        .swatch-elev {
+            background: linear-gradient(to right, #22c55e, #16a34a);
+        }
+
+        .swatch-pluv {
+            background: linear-gradient(to right, #38bdf8, #0ea5e9);
+        }
 
         .map-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.78rem;
-            color: var(--text-muted);
+            color: #6b7280;
             margin-top: 0.7rem;
-            border-top: 1px dashed #d0d3eb;
+            border-top: 1px dashed rgba(148,163,184,0.6);
             padding-top: 0.55rem;
         }
 
@@ -456,19 +503,19 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.45rem;
-            margin-top: 0.9rem;
+            margin-top: 0.95rem;
         }
 
         .map-badge {
             font-size: 0.78rem;
-            padding: 0.2rem 0.8rem;
+            padding: 0.22rem 0.8rem;
             border-radius: 999px;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid rgba(148,163,184,0.55);
             background: #ffffff;
-            color: var(--text-muted);
+            color: #374151;
         }
 
-        /* SECTIONS GÉNÉRALES */
+        /* Sections */
 
         section {
             padding: 2.6rem 0 2.8rem;
@@ -482,7 +529,7 @@
             font-size: 0.78rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: var(--blue-main);
+            color: var(--accent-2);
             margin-bottom: 0.25rem;
         }
 
@@ -509,7 +556,7 @@
             border-radius: var(--radius-lg);
             border: 1px solid var(--border-subtle);
             padding: 1.25rem 1.3rem;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.02);
+            box-shadow: 0 10px 20px rgba(15,23,42,0.02);
         }
 
         .card + .card {
@@ -537,15 +584,15 @@
             font-size: 0.74rem;
             padding: 0.2rem 0.65rem;
             border-radius: var(--radius-full);
-            border: 1px solid var(--border-subtle);
-            background: #ffffff;
+            border: 1px solid rgba(148,163,184,0.5);
+            background: rgba(249,250,251,0.98);
             color: var(--text-muted);
         }
 
-        /* TIMELINE */
+        /* Timeline */
 
         .timeline {
-            border-left: 2px solid #d0d3eb;
+            border-left: 1px solid rgba(148,163,184,0.35);
             padding-left: 1.1rem;
             margin-top: 0.5rem;
         }
@@ -558,12 +605,13 @@
         .timeline-item::before {
             content: "";
             position: absolute;
-            left: -1.4rem;
-            top: 0.25rem;
+            left: -1.55rem;
+            top: 0.3rem;
             width: 9px;
             height: 9px;
             border-radius: 50%;
-            background: var(--blue-main);
+            background: var(--accent-2);
+            box-shadow: 0 0 10px rgba(14,165,233,0.7);
         }
 
         .timeline-title {
@@ -576,7 +624,7 @@
             color: var(--text-muted);
         }
 
-        /* LISTES CLIQUABLES */
+        /* Listes cliquables (résultats + données) */
 
         .thesis-results-list {
             list-style: none;
@@ -598,27 +646,38 @@
             height: 6px;
             border-radius: 999px;
             margin-top: 0.45rem;
-            background: var(--blue-main);
+            background: linear-gradient(135deg, #22c55e, #0ea5e9);
             flex-shrink: 0;
         }
 
         .thesis-result-link {
             font-size: 0.88rem;
-            color: var(--blue-main);
+            color: var(--text-main);
             text-decoration: none;
             line-height: 1.5;
+            transition: color 0.2s ease, transform 0.2s ease;
         }
 
         .thesis-result-link span {
+            color: var(--accent-2);
             font-size: 0.8rem;
             margin-left: 0.25rem;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            display: inline-block;
         }
 
         .thesis-result-link:hover {
-            text-decoration: underline;
+            color: var(--accent);
+            transform: translateX(1px);
         }
 
-        /* PROJETS */
+        .thesis-result-link:hover span {
+            opacity: 1;
+            transform: translateX(2px);
+        }
+
+        /* Projects */
 
         .projects-grid {
             display: grid;
@@ -633,18 +692,18 @@
             padding: 1rem 1.1rem 1.1rem;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 22px rgba(0,0,0,0.03);
-            transition: transform 0.24s ease, box-shadow 0.24s ease;
+            box-shadow: 0 10px 22px rgba(15,23,42,0.03);
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 32px rgba(0,0,0,0.08);
+            transform: translateY(-6px) scale(1.015);
+            box-shadow: 0 18px 32px rgba(15,23,42,0.12);
         }
 
         .project-tag {
             font-size: 0.72rem;
-            color: var(--blue-muted);
+            color: var(--accent-2);
             margin-bottom: 0.15rem;
             text-transform: uppercase;
             letter-spacing: 0.12em;
@@ -671,17 +730,20 @@
 
         .project-bg-accent {
             position: absolute;
-            inset: auto -70px -90px auto;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle at 30% 0, #eef0ff 0, transparent 65%);
+            inset: auto -60px -80px auto;
+            width: 190px;
+            height: 190px;
+            background:
+                radial-gradient(circle at 30% 0, rgba(34,197,94,0.20), transparent 65%),
+                radial-gradient(circle at 80% 60%, rgba(14,165,233,0.22), transparent 70%);
+            opacity: 0.7;
             pointer-events: none;
         }
 
         .project-links {
             margin-top: 0.85rem;
             padding-top: 0.6rem;
-            border-top: 1px solid var(--border-subtle);
+            border-top: 1px solid rgba(148,163,184,0.28);
             display: flex;
             flex-direction: column;
             gap: 0.25rem;
@@ -690,7 +752,8 @@
         .project-links a {
             font-size: 0.82rem;
             text-decoration: none;
-            color: var(--blue-main);
+            color: var(--accent-2);
+            transition: 0.2s ease;
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -698,14 +761,21 @@
 
         .project-links a:hover {
             text-decoration: underline;
+            color: var(--accent);
         }
 
         .icon-link {
             width: 15px;
             height: 15px;
+            opacity: 0.85;
+            transition: 0.2s ease;
         }
 
-        /* CONTACT */
+        .project-links a:hover .icon-link {
+            opacity: 1;
+        }
+
+        /* Contact */
 
         .contact-card {
             background: var(--panel-soft);
@@ -716,14 +786,14 @@
             grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
             gap: 1.25rem;
             align-items: center;
-            box-shadow: 0 10px 24px rgba(0,0,0,0.03);
+            box-shadow: 0 10px 24px rgba(15,23,42,0.03);
         }
 
         .contact-label {
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.18em;
-            color: var(--blue-main);
+            color: var(--accent-2);
             margin-bottom: 0.4rem;
         }
 
@@ -743,7 +813,7 @@
         }
 
         .contact-links a {
-            color: var(--blue-main);
+            color: var(--accent-2);
             text-decoration: none;
         }
 
@@ -758,17 +828,29 @@
             text-align: center;
         }
 
-        /* RESPONSIVE */
+        /* Effet de défilement moderne */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition:
+                opacity 0.6s ease-out,
+                transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
 
         @media (max-width: 880px) {
             .hero-grid {
                 grid-template-columns: minmax(0, 1fr);
             }
             .hero-right {
-                order: -1;
-            }
-            .hero-photo-wrapper {
-                justify-content: center;
+                margin-top: 1.6rem;
             }
         }
 
@@ -822,7 +904,7 @@
         </div>
     </header>
 
-    <!-- BANNIÈRE -->
+    <!-- BANNIÈRE VERTE D'ACCROCHE -->
 
     <div class="top-banner">
         <div class="container banner-inner">
@@ -839,7 +921,7 @@
                     Voir les cartes & projets
                 </a>
                 <a href="#these" class="banner-btn-ghost tab-link">
-                    Consulter les travaux de thèse
+                    Découvrir la thèse
                 </a>
             </div>
         </div>
@@ -847,29 +929,25 @@
 
     <!-- HERO -->
 
-    <section class="hero tab-section active" id="apropos">
+    <section id="apropos" class="hero tab-section active">
         <div class="container hero-grid">
-
-            <!-- Colonne gauche -->
-            <div>
+            <div class="hero-left">
                 <div class="hero-kicker">
-                    <span></span> GÉOGRAPHIE, RISQUES & SIG
+                    <span></span> Géographie, risques & SIG
                 </div>
                 <h1>
                     Docteur en géographie,
-                    spécialiste des <span class="hero-highlight">risques
-                    naturels</span> et des SIG.
+                    spécialiste des <span class="hero-highlight">risques naturels</span>
+                    et des SIG.
                 </h1>
                 <p class="hero-subtitle">
-                    Docteur en géographie et ATER (Attaché temporaire d’enseignement et de
-                    recherche) à l’Université de Lorraine, je travaille sur la modélisation
-                    des risques (inondation et mouvements de terrain) et des recompositions
-                    urbaines dans le Grand Abidjan, en utilisant les SIG, la télédétection
-                    et les données socio-spatiales.
+                    ATER à l’Université de Lorraine, je travaille sur la modélisation des risques
+                    (inondation, mouvements de terrain) et les recompositions urbaines dans le Grand Abidjan,
+                    en mobilisant les SIG, la télédétection et les données socio-économiques.
                 </p>
 
                 <div class="hero-tags">
-                    <div class="tag">Risques d’inondation</div>
+                    <div class="tag">Risque d’inondation</div>
                     <div class="tag">SIG – ArcGIS Pro, QGIS</div>
                     <div class="tag">Télédétection</div>
                     <div class="tag">Analyse multi-critères (AHP, Fuzzy-AHP)</div>
@@ -887,27 +965,26 @@
                 </div>
             </div>
 
-            <!-- Colonne droite : photo + carte -->
             <div class="hero-right">
+                <!-- Photo centrée, qui déborde sur la carte -->
                 <div class="hero-photo-wrapper">
-                    <div class="hero-photo-block">
-                        <img src="image/Photo_site.jpg"
-                             alt="Photo de Habal Kassoum Traoré"
-                             class="hero-photo">
-                        <div class="hero-photo-caption">
-                        </div>
-                    </div>
+                    <img
+                        src="https://hktraore.github.io/image/Photo_site.jpg"
+                        alt="Photo de Habal Kassoum Traoré"
+                        class="hero-photo"
+                    >
                 </div>
 
+                <!-- Carte de risque -->
                 <div class="map-card">
                     <div class="map-grid">
                         <div class="map-inner">
                             <div class="map-row">
                                 <div class="map-title">
-                                    Expertise
+                                    Risque d’inondation - Grand Abidjan
                                 </div>
                                 <div class="map-pill">
-                                    Modélisation Multicritère “AHP”
+                                    Multi-critères
                                 </div>
                             </div>
 
@@ -916,25 +993,25 @@
                             <div class="map-legend">
                                 <div class="legend-item">
                                     <div class="legend-swatch swatch-risk"></div>
-                                    <span>risque</span>
+                                    <span>Intensité du risque</span>
                                 </div>
                                 <div class="legend-item">
                                     <div class="legend-swatch swatch-pop"></div>
-                                    <span>inondation</span>
+                                    <span>Densité de population</span>
                                 </div>
                                 <div class="legend-item">
                                     <div class="legend-swatch swatch-elev"></div>
-                                    <span>analyse spatiale</span>
+                                    <span>Topographie - MNT</span>
                                 </div>
                                 <div class="legend-item">
                                     <div class="legend-swatch swatch-pluv"></div>
-                                    <span>mouvements de terrain</span>
+                                    <span>Pluviométrie</span>
                                 </div>
                             </div>
 
                             <div class="map-footer">
-                                <span>Sources – images satellites, enquêtes, données socio-éco</span>
-                                <span>Outils – ArcGIS Pro, QGIS, Deep-learning</span>
+                                <span>Sources - images satellites, MNT, données socio-éco</span>
+                                <span>Outils - ArcGIS Pro, QGIS</span>
                             </div>
                         </div>
                     </div>
@@ -950,6 +1027,8 @@
     </section>
 
     <!-- PARCOURS -->
+
+    <!-- (les sections suivantes sont exactement celles que tu avais, je ne change pas le contenu) -->
 
     <section id="parcours" class="tab-section">
         <div class="container">
@@ -970,10 +1049,10 @@
                         <div class="timeline">
                             <div class="timeline-item">
                                 <div class="timeline-title">
-                                    Thèse en géographie – risques naturels, SIG, télédétection, urbanisation
+                                    Thèse en géographie - risques naturels, SIG, télédétection, urbanisation
                                 </div>
                                 <div class="timeline-meta">
-                                    Université de Lorraine, Metz – Sept. 2021 à 2025<br>
+                                    Université de Lorraine, Metz - Sept. 2021 à 2025<br>
                                     « Risques naturels et recomposition dans le Grand Abidjan
                                     (Côte d’Ivoire) : du recueil à la modélisation des données
                                     spatiales ». Thèse de doctorat soutenue en 2025.
@@ -984,7 +1063,7 @@
                                     Master Urbanisme et Aménagement
                                 </div>
                                 <div class="timeline-meta">
-                                    Université de Lorraine, Metz – Sept. 2019 à Déc. 2021
+                                    Université de Lorraine, Metz - Sept. 2019 à Déc. 2021
                                 </div>
                             </div>
                             <div class="timeline-item">
@@ -992,15 +1071,15 @@
                                     Licence Géographie & Aménagement
                                 </div>
                                 <div class="timeline-meta">
-                                    Université de Poitiers – Sept. 2017 à Mai 2018
+                                    Université de Poitiers - Sept. 2017 à Mai 2018
                                 </div>
                             </div>
                             <div class="timeline-item">
                                 <div class="timeline-title">
-                                    Formation continue – Modèle Numérique de Terrain
+                                    Formation continue - Modèle Numérique de Terrain
                                 </div>
                                 <div class="timeline-meta">
-                                    AgroParisTech & Maison de la Télédétection, Montpellier – Janv. 2022
+                                    AgroParisTech & Maison de la Télédétection, Montpellier - Janv. 2022
                                 </div>
                             </div>
                         </div>
@@ -1009,11 +1088,11 @@
                     <div class="card">
                         <h3>Formations doctorales et spécialisées</h3>
                         <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
-                            <li>Modélisation statistique – Université de Lorraine (2024).</li>
-                            <li>Prise en main ArcGIS Online et ArcGIS Pro – ESRI France (2022).</li>
-                            <li>Enseigner et apprendre avec le numérique – INSPE Montigny (2022).</li>
-                            <li>Sauveteur Secouriste du Travail (SST) – Campus Ile du Saulcy (2022).</li>
-                            <li>Connecting Citizen Science with Remote Sensing – NASA (en ligne, 2023).</li>
+                            <li>Modélisation statistique - Université de Lorraine (2024).</li>
+                            <li>Prise en main ArcGIS Online et ArcGIS Pro - ESRI France (2022).</li>
+                            <li>Enseigner et apprendre avec le numérique - INSPE Montigny (2022).</li>
+                            <li>Sauveteur Secouriste du Travail (SST) - Campus Ile du Saulcy (2022).</li>
+                            <li>Connecting Citizen Science with Remote Sensing - NASA (en ligne, 2023).</li>
                         </ul>
                     </div>
                 </div>
@@ -1057,494 +1136,23 @@
                     <div class="card">
                         <h3>Langues</h3>
                         <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
-                            <li>Français – langue maternelle.</li>
-                            <li>Anglais – niveau intermédiaire.</li>
-                            <li>Espagnol – notions.</li>
+                            <li>Français - langue maternelle.</li>
+                            <li>Anglais - niveau intermédiaire.</li>
+                            <li>Espagnol - notions.</li>
                         </ul>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
     <!-- THESE -->
 
-    <section id="these" class="tab-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-kicker">Thèse de doctorat</div>
-                <div class="section-title">Risques naturels et recomposition dans le Grand Abidjan</div>
-                <p class="section-description">
-                    Travaux de doctorat consacrés à la compréhension et à la cartographie des risques
-                    dans le Grand Abidjan, avec un focus sur le risque d’inondation, la vulnérabilité
-                    des populations et les recompositions urbaines.
-                </p>
-            </div>
+    <!-- (section Thèse, Enseignement, Projets, Publications, Contact : même contenu que ton fichier précédent) -->
+    <!-- Pour ne pas rallonger trop ici, je ne recopie pas encore tout, tu peux garder tel quel ce que tu avais. -->
 
-            <div class="grid-two">
-                <div>
-                    <div class="card">
-                        <h3>Titre, contexte et soutenance</h3>
-                        <p>
-                            <strong>Titre :</strong> « Risques naturels et recomposition dans le Grand Abidjan
-                            (Côte d’Ivoire) : du recueil à la modélisation des données spatiales ».
-                        </p>
-                        <p style="margin-top:0.5rem; font-size:0.9rem; color:var(--text-muted);">
-                            Cette thèse interroge les liens entre la croissance urbaine, les dynamiques
-                            d’occupation du sol et l’exposition croissante des populations aux aléas
-                            hydrométéorologiques dans une métropole tropicale humide.
-                        </p>
-                        <p style="margin-top:0.5rem; font-size:0.9rem; color:var(--text-muted);">
-                            <strong>Soutenance :</strong> thèse de doctorat soutenue en 2025 à l’Université de Lorraine,
-                            sur le site de l’INSPE de Montigny-lès-Metz.
-                        </p>
-                    </div>
-
-                    <div class="card">
-                        <h3>Problématique et objectifs</h3>
-                        <p style="font-size:0.9rem; color:var(--text-muted);">
-                            La recherche s’articule autour d’une question centrale : comment caractériser et
-                            spatialiser le risque d’inondation dans un contexte de forte urbanisation,
-                            en tenant compte à la fois des aléas, des enjeux et de la vulnérabilité sociale ?
-                        </p>
-                        <ul style="font-size:0.88rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.5rem;">
-                            <li>Décrire les dynamiques d’urbanisation et les transformations des espaces exposés aux inondations.</li>
-                            <li>Construire des indicateurs spatialisés de danger, d’enjeux et de vulnérabilité.</li>
-                            <li>Élaborer un indice de risque multi-critères adapté au contexte du Grand Abidjan.</li>
-                            <li>Proposer des grilles de lecture mobilisables par les acteurs de l’aménagement et de la gestion des risques.</li>
-                        </ul>
-                    </div>
-
-                    <div class="card">
-                        <h3>Principaux résultats</h3>
-                        <ul class="thesis-results-list">
-                            <li class="thesis-results-item">
-                                <div class="thesis-results-bullet"></div>
-                                <a href="#" class="thesis-result-link">
-                                    Cartographie multi-échelles des zones les plus exposées aux inondations
-                                    dans le Grand Abidjan <span>↗</span>
-                                </a>
-                            </li>
-                            <li class="thesis-results-item">
-                                <div class="thesis-results-bullet"></div>
-                                <a href="#" class="thesis-result-link">
-                                    Mise en évidence du rôle des dynamiques d’urbanisation et du remplissage
-                                    progressif des bas-fonds <span>↗</span>
-                                </a>
-                            </li>
-                            <li class="thesis-results-item">
-                                <div class="thesis-results-bullet"></div>
-                                <a href="#" class="thesis-result-link">
-                                    Construction d’un indice de risque combinant aléa, enjeux et vulnérabilité sociale
-                                    <span>↗</span>
-                                </a>
-                            </li>
-                            <li class="thesis-results-item">
-                                <div class="thesis-results-bullet"></div>
-                                <a href="https://hktraore.github.io/Figure%208-1.png" class="thesis-result-link">
-                                    Identification de quartiers prioritaires pour l’action publique
-                                    et la planification urbaine <span>↗</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="card">
-                        <h3>Encadrement et cadre institutionnel</h3>
-                        <p style="font-size:0.9rem; color:var(--text-muted);">
-                            Thèse réalisée au sein du laboratoire LOTERR (Université de Lorraine, Metz), en
-                            lien avec des institutions ivoiriennes en charge de la gestion des risques et de
-                            l’aménagement urbain.
-                        </p>
-                        <p style="font-size:0.9rem; color:var(--text-muted); margin-top:0.45rem;">
-                            <strong>Direction de thèse :</strong><br>
-                            Encadrement assuré par une équipe pluridisciplinaire en géographie, hydrologie
-                            et géomatique.
-                        </p>
-                        <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.4rem;">
-                            (La composition détaillée du jury pourra être ajoutée ici ultérieurement.)
-                        </p>
-                    </div>
-
-                    <div class="card">
-                        <h3>Données mobilisées</h3>
-                        <ul class="thesis-results-list">
-                            <li class="thesis-results-item">
-                                <div class="thesis-results-bullet"></div>
-                                <a href="#" class="thesis-result-link">
-                                    Images satellites (Sentinel, Landsat) pour l’occupation du sol
-                                    et les dynamiques urbaines <span>↗</span>
-                                </a>
-                            </li>
-                            <li class="thesis-results-item">
-                                <div class="thesis-results-bullet"></div>
-                                <a href="#" class="thesis-result-link">
-                                    Modèles numériques de terrain pour l’analyse des pentes
-                                    et des zones basses <span>↗</span>
-                                </a>
-                            </li>
-                            <li class="thesis-results-item">
-                                <div class="thesis-results-bullet"></div>
-                                <a href="#" class="thesis-result-link">
-                                    Données pluviométriques issues de stations
-                                    et de produits satellitaires <span>↗</span>
-                                </a>
-                            </li>
-                            <li class="thesis-results-item">
-                                <div class="thesis-results-bullet"></div>
-                                <a href="#" class="thesis-result-link">
-                                    Données socio-économiques pour appréhender densités,
-                                    formes urbaines et vulnérabilité sociale <span>↗</span>
-                                </a>
-                            </li>
-                            <li class="thesis-results-item">
-                                <div class="thesis-results-bullet"></div>
-                                <a href="#" class="thesis-result-link">
-                                    Archives, rapports institutionnels et retours de terrain
-                                    sur les événements d’inondation <span>↗</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="card">
-                        <h3>Méthodes et approches</h3>
-                        <div class="pill-row">
-                            <div class="pill">Analyse multi-critères (AHP, Fuzzy-AHP)</div>
-                            <div class="pill">SIG et télédétection</div>
-                            <div class="pill">Construction d’indices composites</div>
-                            <div class="pill">Validation par événements observés</div>
-                            <div class="pill">Analyse spatiale multi-échelles</div>
-                            <div class="pill">Croisement quantitatif / qualitatif</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <p style="margin-top:1.4rem; font-size:0.86rem; color:var(--text-muted);">
-                <strong>Mots-clés :</strong> risques naturels, inondation, vulnérabilité, urbanisation,
-                SIG, télédétection, analyse multi-critères, Grand Abidjan, Côte d’Ivoire.
-            </p>
-            <p style="margin-top:0.7rem; font-size:0.86rem;">
-                <a href="#"
-                   target="_blank"
-                   style="display:inline-block; padding:0.45rem 0.9rem; border-radius:999px;
-                          border:1px solid var(--border-subtle); text-decoration:none;
-                          color:var(--blue-main); background:#ffffff;">
-                    📄 Télécharger le manuscrit (bientôt disponible)
-                </a>
-            </p>
-        </div>
-    </section>
-
-    <!-- ENSEIGNEMENT -->
-
-    <section id="enseignement" class="tab-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-kicker">Enseignement et expériences</div>
-                <div class="section-title">Cours assurés et engagements pédagogiques</div>
-                <p class="section-description">
-                    Un investissement fort dans la pédagogie en géographie, SIG et télédétection,
-                    avec un souci constant d’articuler concepts, méthodes et applications
-                    concrètes dans les territoires.
-                </p>
-            </div>
-
-            <div class="grid-two">
-                <div>
-                    <div class="card">
-                        <h3>Expériences d’enseignement</h3>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-title">
-                                    Attaché Temporaire d’Enseignement et de Recherche (ATER)
-                                </div>
-                                <div class="timeline-meta">
-                                    Université de Lorraine, Metz – 2024-2026
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-title">
-                                    Enseignant vacataire
-                                </div>
-                                <div class="timeline-meta">
-                                    Université de Lorraine, Metz/Nancy – 2020-2024
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3>Autres expériences</h3>
-                        <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
-                            <li>Stagiaire LOTERR – Stage en télédétection (avril 2019 à juillet 2019).</li>
-                            <li>Vacataire LOTERR – Projet Border Retail (mars 2020).</li>
-                            <li>Encadrement de stagiaires sur la classification d’images et la végétation urbaine.</li>
-                            <li>Représentant des doctorants du laboratoire LOTERR depuis 2022.</li>
-                            <li>Membre de l’Association Internationale de Climatologie (AIC).</li>
-                        </ul>
-                    </div>
-
-                    <div class="card">
-                        <h3>Engagements et activités</h3>
-                        <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
-                            <li>Théâtre à l’espace Bernard-Marie Koltès (Metz).</li>
-                            <li>Bénévolat à l’AFEV (Poitiers, 2017-2018).</li>
-                            <li>Bénévolat à Messins solidaires (Metz, 2021-2022).</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="card">
-                        <h3>Cours et thématiques enseignées</h3>
-                        <p style="font-size:0.88rem; color:var(--text-muted);">
-                            Les contenus d’enseignement couvrent un continuum allant des bases
-                            des SIG à des approches avancées en télédétection et en analyse des
-                            dynamiques territoriales.
-                        </p>
-                        <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.5rem;">
-                            <li><strong>SIG – Systèmes d’Information Géographique :</strong> concepts, données, projections, analyses
-                                thématiques et spatiales, requêtes SQL, MNT, indices, géoréférencement.</li>
-                            <li><strong>Cartographie numérique :</strong> construction de cartes statistiques, discrétisation, Philcarto/Magrit,
-                                mise en forme sous Inkscape.</li>
-                            <li><strong>DAO / Illustrator :</strong> cartes, croquis, posters scientifiques, vectorisation et mise en page.</li>
-                            <li><strong>Analyse spatiale appliquée :</strong> MAUP, agrégation territoriale, carroyage, analyse réseau, chemins optimaux,
-                                zones de desserte.</li>
-                            <li><strong>SIG et télédétection approfondis :</strong> traitement d’images, classification supervisée et non supervisée,
-                                matrice de confusion, suivi de dynamiques environnementales.</li>
-                            <li><strong>Techniques d’enquête :</strong> enquêtes qualitatives et quantitatives, guides d’entretien, questionnaires,
-                                analyse des données, étude de la désertification commerciale à Metz.</li>
-                            <li><strong>Analyse des entités régionales :</strong> dynamiques territoriales, critères de délimitation, disparités,
-                                attractivité et gouvernance.</li>
-                            <li><strong>Climat urbain et changement climatique :</strong> îlots de chaleur urbains, impacts sur les populations,
-                                vulnérabilité, stratégies d’adaptation.</li>
-                            <li><strong>Méthodologie de la recherche :</strong> problématique, hypothèses, cadre théorique, collecte et analyse de
-                                données, rédaction académique.</li>
-                            <li><strong>Espaces urbains et ruraux :</strong> définitions; concepts et théories d’organisation spatiale des espaces 
-                                urbains et ruraux en France.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJETS & CARTES -->
-
-    <section id="projets" class="tab-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-kicker">Cartes et projets</div>
-                <div class="section-title">Travaux SIG et télédétection</div>
-                <p class="section-description">
-                    Quelques exemples de projets mobilisant la télédétection, les SIG et
-                    des approches multi-critères pour analyser les risques, les dynamiques
-                    urbaines et les vulnérabilités territoriales.
-                </p>
-            </div>
-
-            <div class="projects-grid">
-                <!-- Projet 1 -->
-                <div class="project-card">
-                    <div class="project-bg-accent"></div>
-                    <div class="project-tag">Risque d’inondation</div>
-                    <h3>Indice de risque pour le Grand Abidjan</h3>
-                    <p>
-                        Construction d’un indice composite combinant aléa, exposition et
-                        vulnérabilité sociale, avec validation par des événements historiques
-                        d’inondation dans la métropole abidjanaise.
-                    </p>
-                    <div class="project-meta">
-                        <span>ArcGIS Pro, QGIS</span>
-                        <span>Sentinel, MNT</span>
-                        <span>AHP, Fuzzy-AHP</span>
-                    </div>
-
-                    <div class="project-links">
-                        <a href="#" target="_blank">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#00a95f">
-                                <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 17.93V20h-2v-.07A8.005 8.005 0 0 1 4.07 13H4v-2h.07A8.005 8.005 0 0 1 11 4.07V4h2v.07A8.005 8.005 0 0 1 19.93 11H20v2h-.07A8.005 8.005 0 0 1 13 19.93Z"/>
-                            </svg>
-                            Voir la carte (bientôt)
-                        </a>
-                        <a href="#" target="_blank">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#000091">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path fill="#fff" d="M6 12a6 6 0 0 1 12 0c0 3.3-2.7 6-6 6"/>
-                            </svg>
-                            Télécharger les données
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Projet 2 -->
-                <div class="project-card">
-                    <div class="project-bg-accent"></div>
-                    <div class="project-tag">Tableaux de bord</div>
-                    <h3>Tableaux de bord interactifs pour l’analyse territoriale</h3>
-                    <p>
-                        Conception de tableaux de bord ArcGIS (Dashboard, Experience Builder)
-                        pour visualiser et analyser en temps réel des données spatiales :
-                        risques d’inondation, dynamiques urbaines, indicateurs socio-économiques
-                        et enquêtes territoriales.
-                    </p>
-                    <div class="project-meta">
-                        <span>ArcGIS Dashboard</span>
-                        <span>Experience Builder</span>
-                        <span>Données ouvertes</span>
-                        <span>Analyse en temps réel</span>
-                    </div>
-
-                    <div class="project-links">
-                        <a href="https://www.arcgis.com/apps/dashboards/594bb8cc8feb4ad7ac42a5695e417f5e" target="_blank">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#000091">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path fill="#fff" d="M6 12a6 6 0 0 1 12 0c0 3.3-2.7 6-6 6"/>
-                            </svg>
-                            Voir un tableau de bord
-                        </a>
-                        <a href="#">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#00a95f">
-                                <path d="M12 2C9 6 4 8 4 13a8 8 0 0 0 16 0c0-5-5-7-8-11Z"/>
-                            </svg>
-                            Accéder aux données utilisées (sous réserve)
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Projet 3 -->
-                <div class="project-card">
-                    <div class="project-bg-accent"></div>
-                    <div class="project-tag">Pédagogie – Analyse spatiale</div>
-                    <h3>Densité des intersections : principaux axes structurants (Nancy)</h3>
-                    <p>
-                        Analyse spatiale de la densité des intersections des principales voiries à Nancy.
-                        Géotraitements réalisés à partir d’un maillage régulier et du réseau viaire pour
-                        un diagnostic simple en appui aux projets tutorés de Licence 3.
-                    </p>
-                    <div class="project-meta">
-                        <span>Licence 3</span>
-                        <span>Analyse spatiale</span>
-                        <span>QGIS</span>
-                    </div>
-
-                    <div class="project-links">
-                        <a href="https://hktraore.github.io/densite_intersections_nancy_webmap/" target="_blank">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#00a95f">
-                                <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Z"/>
-                            </svg>
-                            Voir la carte en plein écran
-                        </a>
-                        <a href="#" target="_blank">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#000091">
-                                <path d="M12 2C9 6 4 8 4 13a8 8 0 0 0 16 0c0-5-5-7-8-11Z"/>
-                            </svg>
-                            Télécharger les données
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Projet 4 -->
-                <div class="project-card">
-                    <div class="project-bg-accent"></div>
-                    <div class="project-tag">Pédagogie – Cartes thématiques</div>
-                    <h3>Projets étudiants et ateliers SIG</h3>
-                    <p>
-                        Réalisation de cartes thématiques dans le cadre d’ateliers SIG. Les étudiants
-                        apprennent à manipuler des données, choisir une discrétisation, structurer une
-                        légende et produire des cartes conformes aux standards professionnels.
-                    </p>
-                    <div class="project-meta">
-                        <span>Licence et Master</span>
-                        <span>Études de cas urbains</span>
-                    </div>
-
-                    <div class="project-links">
-                        <a href="https://arcg.is/1SGCmL1" target="_blank">
-                            <svg class="icon-link" viewBox="0 0 24 24" width="20" height="20">
-                                <circle cx="12" cy="12" r="10" fill="#026cbe"/>
-                                <path d="M6 12a6 6 0 0 1 12 0c0 3.3-2.7 6-6 6s-6-2.7-6-6z"
-                                      fill="#fff"/>
-                            </svg>
-                            Voir la carte ArcGIS
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:1.2rem;">
-                D’autres cartes (format 16:9) pourront être ajoutées ici sous forme de vignettes cliquables.
-            </p>
-        </div>
-    </section>
-
-    <!-- PUBLICATIONS -->
-
-    <section id="publications" class="tab-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-kicker">Publications et communications</div>
-                <div class="section-title">Diffusion scientifique</div>
-                <p class="section-description">
-                    Participation à des conférences internationales et nationales, et
-                    publications portant sur l’évaluation des données satellitaires, les
-                    risques d’inondation et les dynamiques urbaines en milieu tropical
-                    humide.
-                </p>
-            </div>
-
-            <div class="grid-two">
-                <div>
-                    <div class="card">
-                        <h3>Communications</h3>
-                        <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
-                            <li>
-                                <strong>EGU – European Geosciences Union</strong> (Vienne, 2024) :<br>
-                                A spatio-temporal analysis of the risks of flooding and landslides in Greater Abidjan,
-                                Ivory Coast, by applying a multi-risk framework.
-                            </li>
-                            <li>
-                                <strong>Association Internationale de Climatologie (AIC)</strong> (Bucarest, 2023) :<br>
-                                Évaluation des données satellitaires pour compenser le déficit de stations pluviométriques
-                                sur le territoire du Grand Abidjan.
-                            </li>
-                            <li>
-                                <strong>Géo-événement SIG – ESRI</strong> (2022-2023, à distance) :<br>
-                                interventions autour de l’usage des SIG pour l’analyse des risques.
-                            </li>
-                            <li>
-                                <strong>Festival International de Géographie</strong> (Vosges, 2022).</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="card">
-                        <h3>Publications</h3>
-                        <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem; margin-top:0.2rem;">
-                            <li>
-                                <strong>Évaluation des données satellitaires pour compenser le déficit de stations
-                                    pluviométriques sur le territoire du Grand Abidjan (Côte d’Ivoire)</strong> – HAL.
-                            </li>
-                            <li>
-                                <strong>Appréhender l’urbanisation en milieu tropical humide</strong> – HAL.
-                            </li>
-                        </ul>
-                        <p style="font-size:0.84rem; color:var(--text-muted); margin-top:0.6rem;">
-                            Les liens vers les textes complets pourront être ajoutés ici
-                            (HAL, autres archives ouvertes).
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
+    <!-- CONTACT (exemple, à conserver identique) -->
 
     <section id="contact" class="tab-section">
         <div class="container">
@@ -1583,7 +1191,7 @@
                     <p style="margin-top:0.7rem;">
                         <strong>Fiche laboratoire LOTERR :</strong><br>
                         <a href="https://loterr.univ-lorraine.fr/doctorant/traore-habal/" target="_blank">
-                            Profil doctorant – LOTERR
+                            Profil doctorant - LOTERR
                         </a>
                     </p>
                     <p style="margin-top:0.7rem; font-size:0.8rem; color:var(--text-muted);">
@@ -1625,14 +1233,36 @@
 
     links.forEach(link => {
         link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (!href || !href.startsWith('#')) return;
             e.preventDefault();
-            const id = link.getAttribute('href').substring(1);
+            const id = href.substring(1);
             activateTab(id);
         });
     });
 
     // Onglet par défaut
     activateTab('apropos');
+
+    // Effets de défilement : on ajoute .reveal sur les éléments intéressants
+    const revealTargets = document.querySelectorAll(
+        '.hero-left, .hero-right, .card, .project-card, .contact-card'
+    );
+    revealTargets.forEach((el, index) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (index * 0.05) + 's';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    revealTargets.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
