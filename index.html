@@ -688,7 +688,7 @@
             transform: translateX(2px);
         }
 
-        /* Projects */
+        /* Projects (cartes & projets) */
 
         .projects-grid {
             display: grid;
@@ -786,6 +786,45 @@
             opacity: 1;
         }
 
+        /* Catégorisation des projets */
+
+        .projects-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.6rem;
+        }
+
+        .projects-category {
+            padding: 0.7rem 0 0.3rem;
+        }
+
+        .projects-category-header {
+            margin-bottom: 0.7rem;
+        }
+
+        .projects-category-kicker {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--accent-2);
+            margin-bottom: 0.15rem;
+        }
+
+        .projects-category-title {
+            font-size: 1.02rem;
+            font-weight: 600;
+            margin-bottom: 0.1rem;
+        }
+
+        .projects-category-desc {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+        }
+
+        .projects-category .projects-grid {
+            margin-top: 0.2rem;
+        }
+
         /* Contact */
 
         .contact-card {
@@ -862,6 +901,9 @@
             section {
                 padding-top: 2.2rem;
                 padding-bottom: 2.3rem;
+            }
+            .projects-categories {
+                grid-template-columns: minmax(0, 1fr);
             }
         }
 
@@ -1009,7 +1051,7 @@
 
                             <div class="map-footer">
                                 <span>Sources - images satellites, enquêtes, données socio-économiques</span>
-                                <span>Outils - ArcGIS Pro, QGIS</span>,  Deep-learning</span>
+                                <span>Outils - ArcGIS Pro, QGIS, Deep-learning</span>
                             </div>
                         </div>
                     </div>
@@ -1430,7 +1472,7 @@
         </div>
     </section>
 
-    <!-- PROJETS & CARTES -->
+    <!-- PROJETS & CARTES (RÉORGANISÉ PAR CATÉGORIES) -->
 
     <section id="projets" class="tab-section">
         <div class="container">
@@ -1444,161 +1486,223 @@
                 </p>
             </div>
 
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-bg-accent"></div>
-                    <div class="project-tag">Risque d’inondation</div>
-                    <h3>Indice de risque pour le Grand Abidjan</h3>
-                    <p>
-                        Construction d’un indice composite combinant aléa, exposition et
-                        vulnérabilité sociale, avec validation par des événements historiques
-                        d’inondation dans la métropole abidjanaise.
-                    </p>
-                    <div class="project-meta">
-                        <span>ArcGIS Pro, QGIS</span>
-                        <span>Sentinel, MNT</span>
-                        <span>AHP, Fuzzy-AHP</span>
+            <div class="projects-categories">
+
+                <!-- Catégorie 1 : Risque d’inondation -->
+
+                <div class="projects-category">
+                    <div class="projects-category-header">
+                        <div class="projects-category-kicker">Risque & vulnérabilité</div>
+                        <div class="projects-category-title">Risque d’inondation dans le Grand Abidjan</div>
+                        <p class="projects-category-desc">
+                            Projets centrés sur la construction d’indices de risque, la combinaison des aléas,
+                            des enjeux et de la vulnérabilité, avec validation par événements observés.
+                        </p>
                     </div>
 
-                    <div class="project-links">
-                        <a href="#" target="_blank">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#10b981">
-                                <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 17.93V20h-2v-.07A8.005 8.005 0 0 1 4.07 13H4v-2h.07A8.005 8.005 0 0 1 11 4.07V4h2v.07A8.005 8.005 0 0 1 19.93 11H20v2h-.07A8.005 8.005 0 0 1 13 19.93Z"/>
-                            </svg>
-                            Voir la carte (bientôt)
-                        </a>
-                        <a href="#" target="_blank">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#0ea5e9">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path fill="#fff" d="M6 12a6 6 0 0 1 12 0c0 3.3-2.7 6-6 6"/>
-                            </svg>
-                            Télécharger les données
-                        </a>
-                    </div>
-                </div>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-bg-accent"></div>
+                            <div class="project-tag">Risque d’inondation</div>
+                            <h3>Indice de risque pour le Grand Abidjan</h3>
+                            <p>
+                                Construction d’un indice composite combinant aléa, exposition et
+                                vulnérabilité sociale, avec validation par des événements historiques
+                                d’inondation dans la métropole abidjanaise.
+                            </p>
+                            <div class="project-meta">
+                                <span>ArcGIS Pro, QGIS</span>
+                                <span>Sentinel, MNT</span>
+                                <span>AHP, Fuzzy-AHP</span>
+                            </div>
 
-                <div class="project-card">
-                    <div class="project-bg-accent"></div>
-                    <div class="project-tag">Tableaux de bord</div>
-                    <h3>Tableaux de bord interactifs pour l’analyse territoriale</h3>
-                    <p>
-                        Conception de tableaux de bord ArcGIS (Dashboard, Experience Builder)
-                        pour visualiser et analyser en temps réel des données spatiales :
-                        risques d’inondation, dynamiques urbaines, indicateurs socio-économiques
-                        et enquêtes territoriales.
-                    </p>
-                    <div class="project-meta">
-                        <span>ArcGIS Dashboard</span>
-                        <span>Experience Builder</span>
-                        <span>Données ouvertes</span>
-                        <span>Analyse en temps réel</span>
-                    </div>
-
-                    <div class="project-links">
-                        <a href="https://www.arcgis.com/apps/dashboards/594bb8cc8feb4ad7ac42a5695e417f5e" target="_blank">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#0ea5e9">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path fill="#fff" d="M6 12a6 6 0 0 1 12 0c0 3.3-2.7 6-6 6"/>
-                            </svg>
-                            Voir un tableau de bord
-                        </a>
-                        <a href="#">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#16a34a">
-                                <path d="M12 2C9 6 4 8 4 13a8 8 0 0 0 16 0c0-5-5-7-8-11Z"/>
-                            </svg>
-                            Accéder aux données utilisées (sous réserve)
-                        </a>
+                            <div class="project-links">
+                                <a href="#" target="_blank">
+                                    <svg class="icon-link" viewBox="0 0 24 24" fill="#10b981">
+                                        <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 17.93V20h-2v-.07A8.005 8.005 0 0 1 4.07 13H4v-2h.07A8.005 8.005 0 0 1 11 4.07V4h2v.07A8.005 8.005 0 0 1 19.93 11H20v2h-.07A8.005 8.005 0 0 1 13 19.93Z"/>
+                                    </svg>
+                                    Voir la carte (bientôt)
+                                </a>
+                                <a href="#" target="_blank">
+                                    <svg class="icon-link" viewBox="0 0 24 24" fill="#0ea5e9">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path fill="#fff" d="M6 12a6 6 0 0 1 12 0c0 3.3-2.7 6-6 6"/>
+                                    </svg>
+                                    Télécharger les données
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-bg-accent"></div>
-                    <div class="project-tag">Pédagogie - Analyse spatiale</div>
-                    <h3>Densité des intersections : principaux axes structurants (Nancy)</h3>
-                    <p>
-                        Réalisation d'une analyse spatiale de la densité des intersections des principales voiries à Nancy. 
-                        Des géotraitements ont été effectués à partir d’un maillage régulier et du réseau viaire. 
-                        Elle permettra aux étudiants (principalement en Licence 3) d'effectuer un diagnostic simple en lien 
-                        avec des projets tutorés dans le cadre de leurs formation.
-                    </p>
-                    <div class="project-meta">
-                        <span>Licence 3</span>
-                        <span>Analyse spatiale</span>
-                        <span>QGIS</span>
+                <!-- Catégorie 2 : Tableaux de bord & analyse territoriale -->
+
+                <div class="projects-category">
+                    <div class="projects-category-header">
+                        <div class="projects-category-kicker">Analyse territoriale</div>
+                        <div class="projects-category-title">Tableaux de bord et suivi des territoires</div>
+                        <p class="projects-category-desc">
+                            Tableaux de bord interactifs pour analyser en continu les indicateurs de risques,
+                            de dynamiques urbaines et de vulnérabilité, à partir de données ouvertes.
+                        </p>
                     </div>
 
-                    <div class="project-links">
-                        <a href="https://hktraore.github.io/densite_intersections_nancy_webmap/" target="_blank">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#10b981">
-                                <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Z"/>
-                            </svg>
-                            Voir la carte en plein écran
-                        </a>
-                        <a href="#" target="_blank">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#16a34a">
-                                <path d="M12 2C9 6 4 8 4 13a8 8 0 0 0 16 0c0-5-5-7-8-11Z"/>
-                            </svg>
-                            Télécharger les données
-                        </a>
-                    </div>
-                </div>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-bg-accent"></div>
+                            <div class="project-tag">Tableaux de bord</div>
+                            <h3>Tableaux de bord interactifs pour l’analyse territoriale</h3>
+                            <p>
+                                Conception de tableaux de bord ArcGIS (Dashboard, Experience Builder)
+                                pour visualiser et analyser en temps réel des données spatiales :
+                                risques d’inondation, dynamiques urbaines, indicateurs socio-économiques
+                                et enquêtes territoriales.
+                            </p>
+                            <div class="project-meta">
+                                <span>ArcGIS Dashboard</span>
+                                <span>Experience Builder</span>
+                                <span>Données ouvertes</span>
+                                <span>Analyse en temps réel</span>
+                            </div>
 
-                 <div class="project-card">
-                    <div class="project-bg-accent"></div>
-                    <div class="project-tag">Pédagogie - Analyse spatiale</div>
-                    <h3>Réalisation de cartes de flux : déplacement d'étudiants (...) (Nancy)</h3>
-                    <p>
-                        (...).
-                    </p>
-                    <div class="project-meta">
-                        <span>Master 1</span>
-                        <span>Analyse spatiale</span>
-                        <span>ArcGIS Pro</span>
-                    </div>
-
-                    <div class="project-links">
-                        <a href="https://univ-lorraine.maps.arcgis.com/apps/mapviewer/index.html?configurableview=true&webmap=c6cc5066a9214c3aad4efcd51cc03562&theme=light&bookmarks=true&heading=true&legend=true&information=true&center=6.583810325151509,49.215651708102016&scale=577790.5542885">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#10b981">
-                                <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Z"/>
-                            </svg>
-                            Voir la carte en plein écran
-                        </a>
-                        <a href="#" target="_blank">
-                            <svg class="icon-link" viewBox="0 0 24 24" fill="#16a34a">
-                                <path d="M12 2C9 6 4 8 4 13a8 8 0 0 0 16 0c0-5-5-7-8-11Z"/>
-                            </svg>
-                            Télécharger les données
-                        </a>
+                            <div class="project-links">
+                                <a href="https://www.arcgis.com/apps/dashboards/594bb8cc8feb4ad7ac42a5695e417f5e" target="_blank">
+                                    <svg class="icon-link" viewBox="0 0 24 24" fill="#0ea5e9">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path fill="#fff" d="M6 12a6 6 0 0 1 12 0c0 3.3-2.7 6-6 6"/>
+                                    </svg>
+                                    Voir un tableau de bord
+                                </a>
+                                <a href="#">
+                                    <svg class="icon-link" viewBox="0 0 24 24" fill="#16a34a">
+                                        <path d="M12 2C9 6 4 8 4 13a8 8 0 0 0 16 0c0-5-5-7-8-11Z"/>
+                                    </svg>
+                                    Accéder aux données utilisées (sous réserve)
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-bg-accent"></div>
-                    <div class="project-tag">Pédagogie - Cartes thématiques</div>
-                    <h3>Projets étudiants et ateliers SIG</h3>
-                    <p>
-                        Réalisation d’une carte thématique dans le cadre d’un atelier SIG.
-                        Les étudiants apprennent à manipuler des données, à choisir une méthode de
-                        discrétisation pertinente, à structurer une légende efficace et à produire
-                        une carte conforme aux standards professionnels de la cartographie.
-                    </p>
+                <!-- Catégorie 3 : Pédagogie - Analyse spatiale -->
 
-                    <div class="project-meta">
-                        <span>Licence et Master</span>
-                        <span>Études de cas urbains</span>
+                <div class="projects-category">
+                    <div class="projects-category-header">
+                        <div class="projects-category-kicker">Pédagogie</div>
+                        <div class="projects-category-title">Ateliers d’analyse spatiale</div>
+                        <p class="projects-category-desc">
+                            Exercices guidés pour les étudiants (Licence et Master) autour de la densité
+                            des réseaux, des flux et des diagnostics territoriaux.
+                        </p>
                     </div>
 
-                    <div class="project-links">
-                        <a href="https://arcg.is/1SGCmL1" target="_blank">
-                            <svg class="icon-link" viewBox="0 0 24 24" width="20" height="20">
-                                <circle cx="12" cy="12" r="10" fill="#026cbe"/>
-                                <path d="M6 12a6 6 0 0 1 12 0c0 3.3-2.7 6-6 6s-6-2.7-6-6z"
-                                      fill="#fff"/>
-                            </svg>
-                            Voir la carte ArcGIS
-                        </a>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-bg-accent"></div>
+                            <div class="project-tag">Pédagogie - Analyse spatiale</div>
+                            <h3>Densité des intersections : principaux axes structurants (Nancy)</h3>
+                            <p>
+                                Réalisation d'une analyse spatiale de la densité des intersections des principales voiries à Nancy. 
+                                Des géotraitements ont été effectués à partir d’un maillage régulier et du réseau viaire. 
+                                Elle permettra aux étudiants (principalement en Licence 3) d'effectuer un diagnostic simple en lien 
+                                avec des projets tutorés dans le cadre de leurs formation.
+                            </p>
+                            <div class="project-meta">
+                                <span>Licence 3</span>
+                                <span>Analyse spatiale</span>
+                                <span>QGIS</span>
+                            </div>
+
+                            <div class="project-links">
+                                <a href="https://hktraore.github.io/densite_intersections_nancy_webmap/" target="_blank">
+                                    <svg class="icon-link" viewBox="0 0 24 24" fill="#10b981">
+                                        <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Z"/>
+                                    </svg>
+                                    Voir la carte en plein écran
+                                </a>
+                                <a href="#" target="_blank">
+                                    <svg class="icon-link" viewBox="0 0 24 24" fill="#16a34a">
+                                        <path d="M12 2C9 6 4 8 4 13a8 8 0 0 0 16 0c0-5-5-7-8-11Z"/>
+                                    </svg>
+                                    Télécharger les données
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-bg-accent"></div>
+                            <div class="project-tag">Pédagogie - Analyse spatiale</div>
+                            <h3>Réalisation de cartes de flux : déplacement d'étudiants (...) (Nancy)</h3>
+                            <p>
+                                (...).
+                            </p>
+                            <div class="project-meta">
+                                <span>Master 1</span>
+                                <span>Analyse spatiale</span>
+                                <span>ArcGIS Pro</span>
+                            </div>
+
+                            <div class="project-links">
+                                <a href="https://univ-lorraine.maps.arcgis.com/apps/mapviewer/index.html?configurableview=true&webmap=c6cc5066a9214c3aad4efcd51cc03562&theme=light&bookmarks=true&heading=true&legend=true&information=true&center=6.583810325151509,49.215651708102016&scale=577790.5542885">
+                                    <svg class="icon-link" viewBox="0 0 24 24" fill="#10b981">
+                                        <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Z"/>
+                                    </svg>
+                                    Voir la carte en plein écran
+                                </a>
+                                <a href="#" target="_blank">
+                                    <svg class="icon-link" viewBox="0 0 24 24" fill="#16a34a">
+                                        <path d="M12 2C9 6 4 8 4 13a8 8 0 0 0 16 0c0-5-5-7-8-11Z"/>
+                                    </svg>
+                                    Télécharger les données
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Catégorie 4 : Pédagogie - Cartes thématiques -->
+
+                <div class="projects-category">
+                    <div class="projects-category-header">
+                        <div class="projects-category-kicker">Pédagogie</div>
+                        <div class="projects-category-title">Ateliers de cartographie thématique</div>
+                        <p class="projects-category-desc">
+                            Projets où les étudiants construisent des cartes thématiques complètes :
+                            discrétisation, légende, mise en forme et standards professionnels.
+                        </p>
+                    </div>
+
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-bg-accent"></div>
+                            <div class="project-tag">Pédagogie - Cartes thématiques</div>
+                            <h3>Projets étudiants et ateliers SIG</h3>
+                            <p>
+                                Réalisation d’une carte thématique dans le cadre d’un atelier SIG.
+                                Les étudiants apprennent à manipuler des données, à choisir une méthode de
+                                discrétisation pertinente, à structurer une légende efficace et à produire
+                                une carte conforme aux standards professionnels de la cartographie.
+                            </p>
+
+                            <div class="project-meta">
+                                <span>Licence et Master</span>
+                                <span>Études de cas urbains</span>
+                            </div>
+
+                            <div class="project-links">
+                                <a href="https://arcg.is/1SGCmL1" target="_blank">
+                                    <svg class="icon-link" viewBox="0 0 24 24" width="20" height="20">
+                                        <circle cx="12" cy="12" r="10" fill="#026cbe"/>
+                                        <path d="M6 12a6 6 0 0 1 12 0c0 3.3-2.7 6-6 6s-6-2.7-6-6z"
+                                              fill="#fff"/>
+                                    </svg>
+                                    Voir la carte ArcGIS
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <p style="font-size:0.85rem; color:var(--text-muted); margin-top:1.2rem;">
