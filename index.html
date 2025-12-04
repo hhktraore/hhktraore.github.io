@@ -572,6 +572,32 @@
             color: var(--text-muted);
         }
 
+        /* Photo de profil dans le hero */
+
+.hero-photo-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+}
+
+.hero-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ffffff;
+    box-shadow: 0 14px 28px rgba(15,23,42,0.25);
+    background: #e5e7eb;
+}
+
+.hero-photo-caption {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+
         /* Timeline */
 
         .timeline {
@@ -897,90 +923,71 @@
 
     <!-- HERO -->
 
-    <section class="hero tab-section active" id="apropos">
-        <div class="container hero-grid">
-            <div>
-                <div class="hero-kicker"><span></span> Géographie, risques & SIG</div>
-                <h1>
-                    Docteur en géographie, spécialiste des
-                    <span class="hero-highlight">risques naturels</span>
-                    et des SIG.
-                </h1>
-                <p class="hero-subtitle">
-                    Docteur en géographie et ATER à l’Université de Lorraine, je travaille
-                    sur la modélisation des risques d’inondation et des recompositions urbaines
-                    dans le Grand Abidjan, en mobilisant les SIG, la télédétection et les
-                    données socio-spatiales.
-                </p>
+<div class="hero-right">
 
-                <div class="hero-tags">
-                    <div class="tag">Risques d’inondation</div>
-                    <div class="tag">SIG - ArcGIS Pro, QGIS</div>
-                    <div class="tag">Télédétection</div>
-                    <div class="tag">Analyse multi-critères (AHP, Fuzzy-AHP)</div>
-                    <div class="tag">Urbanisation</div>
-                    <div class="tag">Grand Abidjan</div>
-                </div>
-
-                <div class="hero-actions">
-                    <a href="#projets" class="btn-primary tab-link">
-                        Voir quelques travaux SIG
-                    </a>
-                    <a href="#parcours" class="btn-ghost tab-link">
-                        Parcours et compétences
-                    </a>
-                </div>
+    <!-- Photo de profil -->
+    <div class="hero-photo-wrapper">
+        <div>
+            <img
+                src="https://hktraore.github.io/ma_photo.jpg"
+                alt="Photo de Habal Kassoum Traoré"
+                class="hero-photo"
+            >
+            <div class="hero-photo-caption">
+                Habal Kassoum Traoré<br>
+                Géographe & spécialiste des risques
             </div>
+        </div>
+    </div>
 
-            <div class="hero-right">
-                <div class="map-card">
-                    <div class="map-grid">
-                        <div class="map-inner">
-                            <div class="map-row">
-                                <div class="map-title">
-                                    Risque d’inondation - Grand Abidjan
-                                </div>
-                                <div class="map-pill">
-                                    Multi-critères
-                                </div>
-                            </div>
-
-                            <div class="map-line"></div>
-
-                            <div class="map-legend">
-                                <div class="legend-item">
-                                    <div class="legend-swatch swatch-risk"></div>
-                                    <span>Intensité du risque</span>
-                                </div>
-                                <div class="legend-item">
-                                    <div class="legend-swatch swatch-pop"></div>
-                                    <span>Densité de population</span>
-                                </div>
-                                <div class="legend-item">
-                                    <div class="legend-swatch swatch-elev"></div>
-                                    <span>Topographie - MNT</span>
-                                </div>
-                                <div class="legend-item">
-                                    <div class="legend-swatch swatch-pluv"></div>
-                                    <span>Pluviométrie</span>
-                                </div>
-                            </div>
-
-                            <div class="map-footer">
-                                <span>Sources - images satellites, MNT, données socio-éco</span>
-                                <span>Outils - ArcGIS Pro, QGIS</span>
-                            </div>
-                        </div>
+    <!-- Carte de risque -->
+    <div class="map-card">
+        <div class="map-grid">
+            <div class="map-inner">
+                <div class="map-row">
+                    <div class="map-title">
+                        Risque d’inondation - Grand Abidjan
                     </div>
-
-                    <div class="map-badges">
-                        <div class="map-badge">SIG & télédétection</div>
-                        <div class="map-badge">Validation par événements observés</div>
-                        <div class="map-badge">Appui à la décision territoriale</div>
+                    <div class="map-pill">
+                        Multi-critères
                     </div>
+                </div>
+
+                <div class="map-line"></div>
+
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <div class="legend-swatch swatch-risk"></div>
+                        <span>Intensité du risque</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-swatch swatch-pop"></div>
+                        <span>Densité de population</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-swatch swatch-elev"></div>
+                        <span>Topographie - MNT</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-swatch swatch-pluv"></div>
+                        <span>Pluviométrie</span>
+                    </div>
+                </div>
+
+                <div class="map-footer">
+                    <span>Sources - images satellites, MNT, données socio-éco</span>
+                    <span>Outils - ArcGIS Pro, QGIS</span>
                 </div>
             </div>
         </div>
+
+        <div class="map-badges">
+            <div class="map-badge">SIG & télédétection</div>
+            <div class="map-badge">Validation par événements observés</div>
+            <div class="map-badge">Appui à la décision territoriale</div>
+        </div>
+    </div>
+</div>
     </section>
 
     <!-- PARCOURS -->
