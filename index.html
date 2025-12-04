@@ -370,7 +370,7 @@
 
         .hero-photo-wrapper {
             position: absolute;
-            top: -40px; /* remonte la photo au-dessus de la carte */
+            top: -40px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 2;
@@ -406,7 +406,7 @@
             border: 1px solid rgba(148,163,184,0.35);
             box-shadow: 0 20px 40px rgba(15,23,42,0.10);
             overflow: hidden;
-            margin-top: 3.5rem; /* laisse la place à la photo au-dessus */
+            margin-top: 3.5rem;
         }
 
         .map-grid {
@@ -690,12 +690,6 @@
 
         /* Projects (cartes & projets) */
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.15rem;
-        }
-
         .project-card {
             background: var(--panel-soft);
             border-radius: var(--radius-lg);
@@ -786,20 +780,53 @@
             opacity: 1;
         }
 
-        /* Catégorisation des projets */
+        /* Catégorisation des projets – style premium */
 
         .projects-categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.6rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.9rem;
+            align-items: stretch;
         }
 
         .projects-category {
-            padding: 0.7rem 0 0.3rem;
+            position: relative;
+            padding: 1.1rem 1.3rem 1.2rem;
+            border-radius: 26px;
+            background:
+                radial-gradient(circle at 0 0, rgba(34,197,94,0.06), transparent 60%),
+                radial-gradient(circle at 100% 100%, rgba(14,165,233,0.06), transparent 60%),
+                #f9fafb;
+            border: 1px solid rgba(148,163,184,0.4);
+            box-shadow: 0 18px 30px rgba(15,23,42,0.04);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .projects-category::before {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            background: radial-gradient(circle at 0 0, rgba(34,197,94,0.10), transparent 55%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .projects-category:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 22px 40px rgba(15,23,42,0.10);
+            border-color: rgba(34,197,94,0.55);
+        }
+
+        .projects-category:hover::before {
+            opacity: 1;
         }
 
         .projects-category-header {
             margin-bottom: 0.7rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px dashed rgba(148,163,184,0.55);
         }
 
         .projects-category-kicker {
@@ -823,6 +850,9 @@
 
         .projects-category .projects-grid {
             margin-top: 0.2rem;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 0.9rem;
         }
 
         /* Contact */
@@ -889,6 +919,12 @@
             }
         }
 
+        @media (max-width: 900px) {
+            .projects-categories {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
         @media (max-width: 720px) {
             nav ul {
                 gap: 0.65rem;
@@ -901,9 +937,6 @@
             section {
                 padding-top: 2.2rem;
                 padding-bottom: 2.3rem;
-            }
-            .projects-categories {
-                grid-template-columns: minmax(0, 1fr);
             }
         }
 
