@@ -178,6 +178,14 @@
             }
             .overlay.active { opacity: 1; pointer-events: auto; }
         }
+.project-bullets{
+  margin: 0.8rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--text-muted, #6b7280);
+}
+.project-bullets li{
+  margin: 0.35rem 0;
+}
 
         /* --- STYLES GENERAUX (Votre design complet) --- */
 
@@ -759,28 +767,51 @@
                     </div>
                 </div>
 
-                <div class="projects-category">
-                    <div class="projects-category-header">
-                        <div class="projects-category-kicker">Analyse territoriale</div>
-                        <div class="projects-category-title">Tableaux de bord</div>
-                    </div>
-                    <div class="projects-grid">
-                        <div class="project-card">
-                            <div class="project-bg-accent"></div>
-                            <div class="project-tag">Tableaux de bord</div>
-                            <h3>Dashboards interactifs (avec Survey 123/ ArcGIS Dashbord/ ArcGIS Pro)</h3>
-                            <p>
-                                Visualisation de données spatiales (risques, dynamiques urbaines) via ArcGIS Dashboard.
-                            </p>
-                            <div class="project-links">
-                                <a href="https://www.arcgis.com/apps/dashboards/594bb8cc8feb4ad7ac42a5695e417f5e" target="_blank">
-                                    <svg class="icon-link" viewBox="0 0 24 24" fill="#0ea5e9"><circle cx="12" cy="12" r="10"/><path fill="#fff" d="M6 12a6 6 0 0 1 12 0c0 3.3-2.7 6-6 6"/></svg>
-                                    Voir un tableau de bord
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="projects-category">
+  <div class="projects-category-header">
+    <div class="projects-category-kicker">Analyse territoriale</div>
+    <div class="projects-category-title">Tableaux de bord</div>
+  </div>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-bg-accent"></div>
+
+      <div class="project-tag">ArcGIS Dashboard</div>
+
+      <h3>Dashboard interactif (Survey123 · ArcGIS Pro · ArcGIS Dashboards)</h3>
+
+      <p>
+        Conception d’un tableau de bord interactif à partir d’une enquête de terrain
+        (Survey123) sur les catastrophes naturelles dans le Grand Abidjan.
+        Traitement et structuration des données sous ArcGIS Pro, puis publication
+        d’indicateurs, graphiques et cartes dynamiques pour appuyer l’analyse de la
+        vulnérabilité et la lecture spatiale des résultats (filtres par commune, profils
+        socio-démographiques, localisation des répondants).
+      </p>
+
+      <ul class="project-bullets">
+        <li><strong>Collecte :</strong> questionnaire et géolocalisation des enquêtés (Survey123)</li>
+        <li><strong>Gestion des données :</strong> nettoyage, contrôle qualité, structuration (tables / couches)</li>
+        <li><strong>Analyse SIG :</strong> synthèses spatiales et statistiques, indicateurs thématiques</li>
+        <li><strong>Restitution :</strong> dashboard interactif (KPIs, graphiques, carte, filtres)</li>
+        <li><strong>Publication :</strong> partage web et diffusion pour la communication des résultats</li>
+      </ul>
+
+      <div class="project-links">
+        <a href="https://www.arcgis.com/apps/dashboards/594bb8cc8feb4ad7ac42a5695e417f5e"
+           target="_blank" rel="noopener">
+          <svg class="icon-link" viewBox="0 0 24 24" fill="#0ea5e9" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path fill="#fff" d="M6 12a6 6 0 0 1 12 0c0 3.3-2.7 6-6 6"/>
+          </svg>
+          Voir le tableau de bord
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="projects-category">
     <div class="projects-category-header">
         <div class="projects-category-kicker">Pédagogie</div>
