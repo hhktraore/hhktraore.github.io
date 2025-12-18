@@ -408,11 +408,21 @@
     <section id="these" class="tab-section">
         <div class="container">
             <div class="section-header">
-                <div class="section-kicker">Thèse</div>
-                <div class="section-title">Risques naturels et recomposition</div>
+                <div class="section-kicker">Thèse de doctorat</div>
+                <div class="section-title">Risques naturels et recomposition dans le Grand Abidjan</div>
+                <p class="section-description">Travaux de doctorat consacrés à la compréhension et à la cartographie des risques dans le Grand Abidjan.</p>
             </div>
-            <div class="card">
-                <p>Ma thèse interroge les liens entre la croissance urbaine et l’exposition croissante des populations aux aléas hydrométéorologiques dans le Grand Abidjan.</p>
+            <div class="grid-two">
+                <div class="card">
+                    <h3>Titre et contexte</h3>
+                    <p><strong>Titre :</strong> « Risques naturels et recomposition dans le Grand Abidjan (Côte d’Ivoire) : du recueil à la modélisation des données spatiales ». Thèse soutenue en 2025.</p>
+                </div>
+                <div class="card">
+                    <h3>Principaux résultats</h3>
+                    <ul class="thesis-results-list">
+                        <li class="thesis-results-item"><div class="thesis-results-bullet"></div><div class="thesis-result-link">Cartographie multi-échelles des zones exposées.</div></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -422,18 +432,15 @@
             <div class="section-header">
                 <div class="section-kicker">Enseignement</div>
                 <div class="section-title">Expériences pédagogiques</div>
-                <p class="section-description">Investissement fort dans la pédagogie en géographie, SIG et télédétection.</p>
             </div>
 
             <div class="grid-two" style="margin-top: 1rem; margin-bottom: 2rem;">
                 <div class="card">
                     <h3>Volume horaire annuel (HETD)</h3>
-                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">Montée en puissance (bleu : Vacations | vert : ATER).</p>
                     <div style="height: 250px;"><canvas id="evolutionChart"></canvas></div>
                 </div>
                 <div class="card">
                     <h3>Répartition par niveau (Total)</h3>
-                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">Equilibre entre fondamentaux et spécialisation.</p>
                     <div style="height: 250px;"><canvas id="levelChart"></canvas></div>
                 </div>
             </div>
@@ -458,10 +465,8 @@
                     <div class="card">
                         <h3>Cours enseignés</h3>
                         <ul style="font-size:0.86rem; color:var(--text-muted); padding-left:1.1rem;">
-                            <li><strong>SIG & Télédétection :</strong> ArcGIS Pro, QGIS, classification, analyse spatiale.</li>
+                            <li><strong>SIG & Télédétection :</strong> ArcGIS Pro, QGIS, analyse spatiale.</li>
                             <li><strong>Cartographie :</strong> Sémiologie graphique, Illustrator, Philcarto.</li>
-                            <li><strong>Analyse spatiale :</strong> Réseaux, flux, accessibilité.</li>
-                            <li><strong>Enquêtes :</strong> Méthodes qualitatives et quantitatives.</li>
                         </ul>
                     </div>
                 </div>
@@ -472,7 +477,7 @@
     <section id="projets" class="tab-section">
         <div class="container">
             <div class="section-header">
-                <div class="section-kicker">Cartes et projets</div>
+                <div class="section-kicker">Réalisations</div>
                 <div class="section-title">Travaux SIG et télédétection</div>
             </div>
             <div class="projects-categories">
@@ -483,20 +488,13 @@
                         <div class="project-links"><a href="https://www.arcgis.com/apps/dashboards/594bb8cc8feb4ad7ac42a5695e417f5e" target="_blank">Voir le dashboard</a></div>
                     </div>
                 </div>
-                <div class="projects-category">
-                    <div class="projects-category-header"><div class="projects-category-title">Nancy</div></div>
-                    <div class="project-card">
-                        <p>Densité des intersections du réseau viaire.</p>
-                        <div class="project-links"><a href="https://hktraore.github.io/densite_intersections_nancy_webmap/" target="_blank">Voir la carte</a></div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <section id="publications" class="tab-section">
         <div class="container">
-            <div class="section-header"><div class="section-title">Publications</div></div>
+            <div class="section-header"><div class="section-title">Diffusion scientifique</div></div>
             <div class="pub-grid">
                 <div class="pub-card">
                     <div class="project-tag">Article - 2025</div>
@@ -524,7 +522,6 @@
 <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Menu Mobile
     const mobileToggle = document.getElementById('mobileToggle');
     const navLinks = document.getElementById('navLinks');
     const overlay = document.getElementById('overlay');
@@ -536,7 +533,6 @@
     mobileToggle.addEventListener('click', toggleMenu);
     overlay.addEventListener('click', toggleMenu);
 
-    // Navigation Onglets
     const sections = document.querySelectorAll('.tab-section');
     const menuLinks = document.querySelectorAll('.nav-links a');
     function activateTab(id) {
@@ -548,6 +544,7 @@
         if (activeLink) activeLink.classList.add('active-tab-link');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
     document.querySelectorAll('.tab-link').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -557,10 +554,8 @@
         });
     });
 
-    // --- GRAPHIQUES ---
-    // Evolution
-    const ctxEvo = document.getElementById('evolutionChart').getContext('2d');
-    new Chart(ctxEvo, {
+    // Graphiques
+    new Chart(document.getElementById('evolutionChart'), {
         type: 'bar',
         data: {
             labels: ['20-21', '21-22', '22-23', '23-24', '24-25', '25-26'],
@@ -570,12 +565,10 @@
                 borderRadius: 6
             }]
         },
-        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
     });
 
-    // Répartition Niveau
-    const ctxLevel = document.getElementById('levelChart').getContext('2d');
-    new Chart(ctxLevel, {
+    new Chart(document.getElementById('levelChart'), {
         type: 'doughnut',
         data: {
             labels: ['Licence 1', 'Licence 2', 'Licence 3', 'Master'],
